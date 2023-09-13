@@ -1,0 +1,89 @@
+﻿@using InquiryApp.Models;
+
+@model Inquiry
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1>L&A Remodeling: Make Your Dream Home A Reality</h1>
+
+    <h2>We Understand How Much Your Home Means to You</h2>
+
+    <p>Your home is more than just a place to live. It’s where you create memories that last a lifetime, express your personality that 
+        makes you unique, and enjoy your lifestyle that makes you happy. But over time, your home may start to look outdated, worn out, 
+        or inefficient. You may have a vision of how your home could be, but you don’t know how to make it happen. You may want to 
+        improve the functionality, appearance, or value of your home without breaking the bank. If you share any of these dreams, then 
+        we would love to hear from you. We are L&A Remodeling, the home remodeling contractor who can turn your vision into reality.</p>
+
+    <h2>Why Choose Us?</h2>
+
+    <p>We are not just a home remodeling contractor. We are a family-owned business that cares about quality, honesty, and customer 
+        satisfaction. We have over 20 years of experience in the industry and we specialize in stairs, cabinets, wood flooring, decks, 
+        attic ladders, and storage houses. We work with you to create custom designs that suit your needs and budget. We use high-quality 
+        materials and products that will last for years. It is our pleasure to provide you with premier service and communication. That 
+        means that we listen to your feedback, answer your questions, and keep you updated throughout the process. We have a satisfaction 
+        guarantee policy that ensures that you are happy with the final result or we will fix it for free within the warranty period. 
+        For more information, please see our Terms and Conditions page. We are grateful for the opportunity to work with you on your home 
+        remodeling project. We appreciate your trust and confidence in us and we look forward to making your dream home a reality.</p>
+
+    <h2>Our Services</h2>
+
+    <p>We offer a wide range of home remodeling services to suit any taste, style, or budget. Whether you want to update your kitchen, 
+        add more storage space, or enhance your outdoor living area, we can help you achieve your goals. Here are some of the services we 
+        offer:</p>
+
+    <h3>Stairs</h3>
+
+    <p>We can design and install new stairs or repair and update existing ones. We can work with different materials, such as wood, 
+        metal, or glass, and create various styles, such as straight, curved, spiral, or floating. We can also add safety features, such 
+        as railings, handrails, or balusters.</p>
+
+    <h3>Cabinets</h3>
+
+    <p>We can design and install new cabinets or refinish and reface existing ones. We can work with different materials, such as wood, 
+        laminate, or metal, and create various styles, such as modern, traditional, or rustic. We can also add features, such as drawers, 
+        shelves, doors, or knobs.</p>
+
+    <h3>Wood Flooring</h3>
+
+    <p>We can install new wood flooring or repair and refinish existing ones. We can work with different types of wood, such as oak, 
+        maple, or cherry, and create various finishes, such as glossy, matte, or distressed. We can also add features, such as borders, 
+        inlays, or patterns.</p>
+
+    <h3>Decks</h3>
+
+    <p>We can design and build new decks or repair and maintain existing ones. We can work with different materials, such as wood, 
+        composite, or vinyl, and create various shapes, sizes, and levels. We can also add features, such as railings, stairs, benches, 
+        or planters. Decks are a great way to enhance your outdoor living area and enjoy the fresh air and sunshine. Whether you want to 
+        create a cozy lounge, a dining area, or a play space, we can help you create the perfect deck for your home.</p>
+
+    <h3>Attic Ladders</h3>
+
+    <p>We can install new attic ladders or replace and adjust existing ones. We can work with different types of ladders, such as 
+        folding, telescoping, or sliding. We can also add features, such as insulation, safety locks, or handles. Attic ladders are a 
+        convenient and safe way to access your attic space and use it for storage or other purposes. Whether you want to save space, 
+        increase security, or improve comfort, we can help you install the right attic ladder for your home.</p>
+
+    <h3>Storage Houses</h3>
+
+    <p>We can design and build new storage houses or repair and upgrade existing ones. We can work with different materials, such as 
+        wood, metal, or plastic, and create various sizes and styles. We can also add features, such as windows, doors, shelves, or 
+        hooks. Storage houses are a practical and attractive way to store your tools, equipment, or belongings outside your home. 
+        Whether you want to organize your garage, protect your valuables, or create a hobby room, we can help you build the ideal 
+        storage house for your needs.</p>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewBag.Message
+        </div>
+    }
+
+    <div id="inquiry-form">
+        <partial name="_InquiryForm" />
+    </div>
+
+
+</div>
