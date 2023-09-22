@@ -35,7 +35,7 @@ namespace Testing.Controllers
             }
 
             // if the model is not valid, return the same view with the model
-            return View(inquiryToInsert);
+            return RedirectToAction("Index", "Home", new { message = "All fields are required." }, fragment: "inquiry-form");
         }
     }
 }

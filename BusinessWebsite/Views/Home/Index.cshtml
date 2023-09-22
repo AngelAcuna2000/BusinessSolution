@@ -76,7 +76,9 @@
 
     @if (ViewBag.Message != null)
     {
-        <div class="alert alert-success" role="alert">
+        var alertClass = ViewBag.Message == "All fields are required." ? "alert alert-danger" : "alert alert-success";
+
+        <div class="@alertClass" role="alert">
             @ViewBag.Message
         </div>
     }
@@ -84,6 +86,4 @@
     <div id="inquiry-form">
         <partial name="_InquiryForm" />
     </div>
-
-
 </div>

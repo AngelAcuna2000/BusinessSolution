@@ -31,6 +31,11 @@ namespace BusinessWebsite.Controllers
             return View(model);
         }
 
+        public IActionResult Portfolio()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
