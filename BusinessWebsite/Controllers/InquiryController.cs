@@ -27,15 +27,21 @@ namespace Testing.Controllers
             // check if the model is valid
             if (ModelState.IsValid)
             {
-                // insert the model to the database
                 repo.InsertInquiry(inquiryToInsert);
 
-                // redirect to the Home Index action with a confirmation message and a fragment identifier
-                return RedirectToAction("Index", "Home", new { message = "Your inquiry has been sent." }, fragment: "inquiry-form");
+                // use TempData to store the message
+                TempData["Message"] = "Your inquiry has been sent.";
+
+                return RedirectToAction("Index", "Home", fragment: "inquiry-form");
             }
 
-            // if the model is not valid, return the same view with the model
-            return RedirectToAction("Index", "Home", new { message = "All fields are required." }, fragment: "inquiry-form");
+            // use TempData to store the message
+            TempData["Message"] = "All fields are required.";
+
+            // use TempData.Keep to mark the value for retention
+            TempData.Keep("Message");
+
+            return RedirectToAction("Index", "Home", fragment: "inquiry-form");
         }
     }
 }

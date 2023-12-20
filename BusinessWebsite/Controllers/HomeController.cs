@@ -14,7 +14,7 @@ namespace BusinessWebsite.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(string message)
+        public IActionResult Index()
         {
             // create a new Inquiry object with some default values
             Inquiry model = new Inquiry()
@@ -27,7 +27,8 @@ namespace BusinessWebsite.Controllers
             };
 
             // pass the model and the message to the view using ViewBag
-            ViewBag.Message = message;
+            // use TempData.Peek to read the message without deleting it
+            ViewBag.Message = TempData.Peek("Message");
             return View(model);
         }
 
