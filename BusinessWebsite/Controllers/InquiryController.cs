@@ -38,9 +38,6 @@ namespace Testing.Controllers
             // use TempData to store the message
             TempData["Message"] = "All fields are required.";
 
-            // use TempData.Keep to mark the value for retention
-            TempData.Keep("Message");
-
             return RedirectToAction("Index", "Home", fragment: "inquiry-form");
         }
     }
