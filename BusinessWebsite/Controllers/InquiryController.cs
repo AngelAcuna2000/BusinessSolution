@@ -8,11 +8,11 @@ namespace Testing.Controllers
 {
     public class InquiryController : Controller
     {
-        private readonly InquiryRepository repo;
+        private readonly InquiryRepository _repo;
 
         public InquiryController(InquiryRepository repo)
         {
-            this.repo = repo;
+            _repo = repo;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -27,7 +27,7 @@ namespace Testing.Controllers
             // check if the model is valid
             if (ModelState.IsValid)
             {
-                repo.InsertInquiry(inquiryToInsert);
+                _repo.InsertInquiry(inquiryToInsert);
 
                 // use TempData to store the message
                 TempData["Message"] = "Your inquiry has been sent.";
