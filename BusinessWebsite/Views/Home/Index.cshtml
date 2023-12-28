@@ -81,12 +81,9 @@
         <div class="@alertClass" role="alert">
             @ViewBag.Message
         </div>
-
-        // clear the TempData value after displaying it
-        TempData.Remove("Message");
     }
 
     <div id="inquiry-form">
-        <partial name="_InquiryForm"/>
+        <partial name="_InquiryForm" />
     </div>
 </div>

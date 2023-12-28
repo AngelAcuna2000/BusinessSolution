@@ -26,9 +26,7 @@ namespace BusinessWebsite.Controllers
                 Email = ""
             };
 
-            // pass the model and the message to the view using ViewBag
-            // use TempData.Peek to read the message without deleting it
-            ViewBag.Message = TempData.Peek("Message");
+            ViewBag.Message = TempData["Message"];
             return View(model);
         }
 
