@@ -1,5 +1,4 @@
 ﻿using BusinessWebsite.Models;
-using InquiryApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

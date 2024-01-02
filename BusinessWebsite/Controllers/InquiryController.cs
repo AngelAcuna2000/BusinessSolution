@@ -1,8 +1,8 @@
 ﻿using BusinessWebsite.Models;
-using InquiryApp;
-using InquiryApp.Models;
+using BusinessWebsite;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using BusinessLogic;
 
 namespace Testing.Controllers
 {
@@ -39,6 +39,43 @@ namespace Testing.Controllers
             TempData["Message"] = "All fields are required.";
 
             return RedirectToAction("Index", "Home", fragment: "inquiry-form");
+        }
+
+        public IActionResult Index()
+        {
+            var inquiries = _repo.GetAllInquiries();
+            return View(inquiries);
+        }
+
+        public IActionResult ViewInquiry(int id)
+        {
+            var inquiry = _repo.GetInquiry(id);
+            return View(inquiry);
+        }
+
+        public IActionResult UpdateInquiry(int id)
+        {
+            Inquiry inq = _repo.GetInquiry(id);
+            if (inq == null)
+            {
+                return View("InquiryNotFound");
+            }
+            return View(inq);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateInquiryToDatabase(Inquiry inquiry)
+        {
+            _repo.UpdateInquiry(inquiry);
+
+            return RedirectToAction("ViewInquiry", new { id = inquiry.Inquiry_ID });
+        }
+
+        [HttpPost]
+        public IActionResult DeleteInquiry(Inquiry inquiry)
+        {
+            _repo.DeleteInquiry(inquiry);
+            return RedirectToAction("Index");
         }
     }
 }

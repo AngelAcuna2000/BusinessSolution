@@ -1,4 +1,5 @@
-using InquiryApp;
+using BusinessLogic;
+using BusinessWebsite;
 using MySql.Data.MySqlClient;
 using System.Data;
 

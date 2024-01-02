@@ -1,4 +1,4 @@
-﻿namespace InquiryApp.Models
+﻿namespace BusinessWebsite.Models
 {
     public class Inquiry
     {
