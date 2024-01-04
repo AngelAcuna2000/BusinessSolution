@@ -1,10 +1,4 @@
-﻿@model Inquiry
-
-@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div>
+﻿<div>
     <h1>L&A Remodeling: Make Your Dream Home A Reality</h1>
 
     <h2>We Understand How Much Your Home Means to You</h2>
@@ -72,6 +66,7 @@
         Whether you want to organize your garage, protect your valuables, or create a hobby room, we can help you build the ideal 
         storage house for your needs.</p>
 
+    <!-- Display success or error message -->
     @if (ViewBag.Message != null)
     {
         var alertClass = ViewBag.Message == "All fields are required." ? "alert alert-danger" : "alert alert-success";
@@ -81,6 +76,7 @@
         </div>
     }
 
+    <!-- Display the inquiry form -->
     <div id="inquiry-form">
         <partial name="_InquiryForm" />
     </div>

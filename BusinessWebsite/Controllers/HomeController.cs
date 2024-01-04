@@ -6,16 +6,9 @@ namespace BusinessWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
-            // create a new Inquiry object with some default values
+            // Create a new Inquiry object with some default values 
             Inquiry model = new Inquiry()
             {
                 Inquiry_ID = 0,
@@ -25,7 +18,10 @@ namespace BusinessWebsite.Controllers
                 Email = ""
             };
 
+            // Display the message stored in TempData
             ViewBag.Message = TempData["Message"];
+
+            // Render the home page with a form that has the values of the Inquiry object (so the form displayed will be empty)
             return View(model);
         }
 
