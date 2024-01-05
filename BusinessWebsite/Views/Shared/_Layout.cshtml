@@ -28,6 +28,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index" asp-fragment="Contact-Us" asp-route-displayMessage="@TempData.ContainsKey("Message")">Contact Us</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -35,6 +38,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <div id="message-container"></div>
             @RenderBody()
         </main>
     </div>
@@ -47,6 +51,20 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            // Handler for "Contact Us" click
+            $('a[href="#Contact-Us"]').click(function () {
+                // Clear the message
+                $('#message-container').empty();
+
+                // Scroll down to the form
+                $('html, body').animate({
+                    scrollTop: $('#Contact-Us').offset().top
+                }, 1000); // Scroll duration
+            });
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

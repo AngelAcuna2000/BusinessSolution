@@ -36,14 +36,14 @@ namespace Testing.Controllers
                 TempData["Message"] = "Your inquiry has been sent.";
 
                 // Render Home page, scroll down the page to the form, and display message stored in TempData above the form
-                return RedirectToAction("Index", "Home", fragment: "inquiry-form");
+                return RedirectToAction("Index", "Home", fragment: "Contact-Us");
             }
 
             // Use TempData to store the message
             TempData["Message"] = "All fields are required.";
 
             // Render Home page, scroll down the page to the form, and display message stored in TempData above the form
-            return RedirectToAction("Index", "Home", fragment: "inquiry-form");
+            return RedirectToAction("Index", "Home", fragment: "Contact-Us");
         }
 
         // Action method to display all inquiries
