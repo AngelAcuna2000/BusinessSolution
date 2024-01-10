@@ -1,4 +1,4 @@
-using BusinessWebsite;
+using InquiryApp;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -49,7 +49,7 @@ var app = builder.Build();
 // defining routes, handling authorization, and specifying the default route).
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseExceptionHandler("/Inquiry/Error");
 
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
@@ -57,12 +57,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseRouting();
 app.UseAuthorization();
 
 // Configure the default route.
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Inquiry}/{action=index}/{id?}");
 
 app.Run();

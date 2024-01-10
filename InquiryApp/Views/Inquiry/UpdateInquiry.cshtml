@@ -1,0 +1,24 @@
+﻿@model Shared.Models.Inquiry
+
+<!-- Display form to update an inquiry -->
+<h2>Update @Model.Name</h2>
+
+@using (Html.BeginForm("UpdateInquiryToDatabase", "Inquiry", "Post"))
+{
+    <!-- Hidden fields for Inquiry_ID and Date -->
+    <input asp-for="Inquiry_ID" type="hidden" value="@Model.Inquiry_ID" />
+    <input asp-for="Date" type="hidden" value="@Model.Date" />
+
+    <!-- Form fields for updating inquiry details -->
+    <label asp-for="Name" class="control-label">Name</label>
+    <input type="text" name="Name" class="form-control" value="@Model.Name" />
+
+    <label asp-for="Phone" class="control-label">Phone</label>
+    <input type="text" step="0.01" name="Phone" class="form-control" value="@Model.Phone" />
+
+    <label asp-for="Email" class="control-label">Email</label>
+    <input type="text" step="0.01" name="Email" class="form-control" value="@Model.Email" />
+
+    <!-- Submit button for updating inquiry -->
+    <input type="submit" value="Update Inquiry" class="btn btn-primary" />
+}

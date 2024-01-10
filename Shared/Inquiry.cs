@@ -1,11 +1,7 @@
-﻿namespace BusinessWebsite.Models
+﻿namespace Shared.Models
 {
     public class Inquiry
     {
-        public Inquiry()
-        {
-        }
-
         public int Inquiry_ID { get; set; }
         public DateTime Date { get; set; }
         public string Name { get; set; }

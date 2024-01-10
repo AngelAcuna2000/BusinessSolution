@@ -1,7 +1,8 @@
-﻿using BusinessWebsite.Models;
+﻿using BusinessWebsite;
+using BusinessWebsite.Models;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Models;
 using System.Diagnostics;
-using BusinessLogic; // This is the namespace where the InquiryRepository class is defined
 
 namespace Testing.Controllers
 {
@@ -15,7 +16,6 @@ namespace Testing.Controllers
             _repo = repo;
         }
 
-        // Error action method
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -39,53 +39,11 @@ namespace Testing.Controllers
                 return RedirectToAction("Index", "Home", fragment: "Contact-Us");
             }
 
-            // Use TempData to store the message
+            // Use TempData to store message
             TempData["Message"] = "All fields are required.";
 
             // Render Home page, scroll down the page to the form, and display message stored in TempData above the form
             return RedirectToAction("Index", "Home", fragment: "Contact-Us");
-        }
-
-        // Action method to display all inquiries
-        public IActionResult Index()
-        {
-            var inquiries = _repo.GetAllInquiries();
-            return View(inquiries);
-        }
-
-        // Action method to view a specific inquiry by ID
-        public IActionResult ViewInquiry(int id)
-        {
-            var inquiry = _repo.GetInquiry(id);
-            return View(inquiry);
-        }
-
-        // Action method to update an inquiry by ID
-        public IActionResult UpdateInquiry(int id)
-        {
-            Inquiry inq = _repo.GetInquiry(id);
-            if (inq == null)
-            {
-                return View("InquiryNotFound");
-            }
-            return View(inq);
-        }
-
-        // Action method to update an inquiry in the database
-        [HttpPost]
-        public IActionResult UpdateInquiryToDatabase(Inquiry inquiry)
-        {
-            _repo.UpdateInquiry(inquiry);
-
-            return RedirectToAction("ViewInquiry", new { id = inquiry.Inquiry_ID });
-        }
-
-        // Action method to delete an inquiry from the database
-        [HttpPost]
-        public IActionResult DeleteInquiry(Inquiry inquiry)
-        {
-            _repo.DeleteInquiry(inquiry);
-            return RedirectToAction("Index");
         }
     }
 }

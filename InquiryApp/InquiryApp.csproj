@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Inquiry.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Include="..\Shared\Inquiry.cs" Link="Inquiry.cs" />
   </ItemGroup>
 
@@ -25,15 +21,5 @@
     <PackageReference Include="Dapper" Version="2.1.28" />
     <PackageReference Include="MySql.Data" Version="8.2.0" />
   </ItemGroup>
-
-	<ItemGroup>
-		<None Update="..\Shared\appsettings.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="..\Shared\appsettings.Development.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-
 
 </Project>

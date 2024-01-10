@@ -1,0 +1,34 @@
+﻿@model Shared.Models.Inquiry
+
+<!-- Display details of a single inquiry -->
+<h3>@Model.Name</h3>
+
+<table class="table">
+    <tr>
+        <th>Inquiry ID</th>
+        <th>Date</th>
+        <th>Phone</th>
+        <th>Email</th>
+    </tr>
+    <tr>
+        <!-- Display specific details of the inquiry -->
+        <td>@Model.Inquiry_ID</td>
+        <td>@Model.Date.ToString("MM/dd/yyyy")</td>
+        <td>@Model.Phone</td>
+        <td>@Model.Email</td>
+    </tr>
+</table>
+
+<div style="display: block">
+    <!-- Link to update the inquiry -->
+    <a href="/Inquiry/UpdateInquiry/@Model.Inquiry_ID">Update this Inquiry</a>
+</div>
+
+<div style="display: block">
+    @using (Html.BeginForm("DeleteInquiry", "Inquiry", "Post"))
+    {
+        <!-- Form for deleting the inquiry -->
+        <input type="hidden" asp-for="Inquiry_ID" value="@Model.Inquiry_ID" />
+        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this inquiry" />
+    }
+</div>

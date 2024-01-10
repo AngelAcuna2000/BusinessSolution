@@ -1,5 +1,6 @@
 ﻿using BusinessWebsite.Models;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Models;
 using System.Diagnostics;
 
 namespace BusinessWebsite.Controllers

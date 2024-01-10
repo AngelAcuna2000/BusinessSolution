@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Shared.Models.Inquiry>
+
+<!-- Display a table of inquiries -->
+<h2>Inquiries</h2>
+<table class="table">
+    <tr>
+        <th>Inquiry ID</th>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+    </tr>
+
+    <!-- Loop through each inquiry in the model -->
+    @foreach (var inquiry in @Model)
+    {
+        <tr>
+            <!-- Display details of each inquiry -->
+            <td><a href=/Inquiry/ViewInquiry/@inquiry.Inquiry_ID>@inquiry.Inquiry_ID</a></td>
+            <td>@inquiry.Date.ToString("MM/dd/yyyy")</td>
+            <td>@inquiry.Name</td>
+            <td>@inquiry.Phone</td>
+            <td>@inquiry.Email</td>
+        </tr>
+    }
+</table>
