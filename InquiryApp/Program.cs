@@ -47,6 +47,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline (Set up how the application handles web requests, including error pages, secure connections, serving files,
 // defining routes, handling authorization, and specifying the default route).
+// {
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Inquiry/Error");
@@ -67,3 +68,4 @@ app.MapControllerRoute(
     pattern: "{controller=Inquiry}/{action=index}/{id?}");
 
 app.Run();
+// }
