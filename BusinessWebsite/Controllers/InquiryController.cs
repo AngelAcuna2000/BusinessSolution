@@ -17,13 +17,6 @@ namespace Testing.Controllers
             _conn = conn;
         }
 
-        // Insert a new inquiry into the database
-        public void InsertInquiry(Inquiry inquiryToInsert)
-        {
-            _conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@name, @phone, @email);",
-             new { name = inquiryToInsert.Name, phone = inquiryToInsert.Phone, email = inquiryToInsert.Email });
-        }
-
         // Action method to handle form submission and insert inquiry into the database
         [HttpPost]
         public IActionResult InsertInquiryToDatabase(Inquiry inquiryToInsert)
@@ -32,7 +25,8 @@ namespace Testing.Controllers
             if (ModelState.IsValid)
             {
                 // Insert inquiry data to database
-                InsertInquiry(inquiryToInsert);
+                _conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@name, @phone, @email);",
+                 new { name = inquiryToInsert.Name, phone = inquiryToInsert.Phone, email = inquiryToInsert.Email });
 
                 // Use TempData to store message
                 TempData["Message"] = "Your inquiry has been sent.";
