@@ -18,11 +18,11 @@ var appSettingsPath = Path.Combine(baseDirectory, "appsettings.json");
 /*
 Configure the database connection as a scoped service in the ASP.NET Core dependency injection (DI) container. This allows the configured and open 
 database connection to be injected into components (controllers, services, etc.) whenever an IDbConnection is requested. The connection is scoped to 
-the lifetime of an HTTP request and will be disposed of at the end of the request.
+the lifetime of an HTTP request and will be disposed of at the end of the request, which is good practice because it frees up resources.
 */
 builder.Services.AddScoped<IDbConnection>((s) =>
 {
-    // Use the explicitly specified path to appsettings.json to build the configuration.
+    // Use the explicitly specified path to appsettings.json to build the configuration settings using the information stored in appsettings.json.
     var configuration = new ConfigurationBuilder().AddJsonFile(appSettingsPath).Build();
 
     // Create a new instance of MySqlConnection using the configured connection string.

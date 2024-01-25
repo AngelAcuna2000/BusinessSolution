@@ -1,25 +1,27 @@
-﻿using BusinessWebsite;
-using BusinessWebsite.Models;
+﻿using BusinessWebsite.Models;
+using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Models;
+using System.Data;
 using System.Diagnostics;
 
 namespace Testing.Controllers
 {
     public class InquiryController : Controller
     {
-        private readonly InquiryRepository _repo;
+        private readonly IDbConnection _conn;
 
         // Constructor to inject InquiryRepository
-        public InquiryController(InquiryRepository repo)
+        public InquiryController(IDbConnection conn)
         {
-            _repo = repo;
+            _conn = conn;
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        // Insert a new inquiry into the database
+        public void InsertInquiry(Inquiry inquiryToInsert)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            _conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@name, @phone, @email);",
+             new { name = inquiryToInsert.Name, phone = inquiryToInsert.Phone, email = inquiryToInsert.Email });
         }
 
         // Action method to handle form submission and insert inquiry into the database
@@ -30,7 +32,7 @@ namespace Testing.Controllers
             if (ModelState.IsValid)
             {
                 // Insert inquiry data to database
-                _repo.InsertInquiry(inquiryToInsert);
+                InsertInquiry(inquiryToInsert);
 
                 // Use TempData to store message
                 TempData["Message"] = "Your inquiry has been sent.";
@@ -44,6 +46,12 @@ namespace Testing.Controllers
 
             // Render Home page, scroll down the page to the form, and display message stored in TempData above the form
             return RedirectToAction("Index", "Home", fragment: "Contact-Us");
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

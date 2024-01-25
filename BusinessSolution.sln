@@ -7,7 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessWebsite", "Business
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{55ED16E9-7403-4861-8D3F-6411F96071E2}"
 	ProjectSection(SolutionItems) = preProject
-		appsettings.Development.json = appsettings.Development.json
 		..\InquiryApp\InquiryApp\appsettings.json = ..\InquiryApp\InquiryApp\appsettings.json
 	EndProjectSection
 EndProject
