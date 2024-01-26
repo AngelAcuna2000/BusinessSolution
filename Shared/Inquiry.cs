@@ -8,7 +8,6 @@
         public string Phone { get; set; }
         public string Email { get; set; }
 
-        // Constructor to set default values
         public Inquiry()
         {
             Inquiry_ID = 0;

@@ -1,5 +1,4 @@
 ﻿using BusinessWebsite.Models;
-using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using Shared.Models;
@@ -41,8 +40,14 @@ namespace BusinessWebsite.Controllers
                 if (ModelState.IsValid)
                 {
                     // Insert inquiry data to the database
-                    conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@name, @phone, @email);",
-                        new { name = inquiryToInsert.Name, phone = inquiryToInsert.Phone, email = inquiryToInsert.Email });
+                    using (var cmd = new MySqlCommand("INSERT INTO inquiries (name, phone, email) VALUES (@name, @phone, @email);", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@name", inquiryToInsert.Name);
+                        cmd.Parameters.AddWithValue("@phone", inquiryToInsert.Phone);
+                        cmd.Parameters.AddWithValue("@email", inquiryToInsert.Email);
+
+                        cmd.ExecuteNonQuery();
+                    }
 
                     // Use TempData to store message
                     TempData["Message"] = "Your inquiry has been sent.";
