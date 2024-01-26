@@ -11,7 +11,6 @@ namespace Testing.Controllers
     {
         private readonly IDbConnection _conn;
 
-        // Constructor to inject InquiryRepository
         public InquiryController(IDbConnection conn)
         {
             _conn = conn;
