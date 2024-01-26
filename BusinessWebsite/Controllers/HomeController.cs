@@ -1,34 +1,19 @@
 ﻿using BusinessWebsite.Models;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 using Shared.Models;
-using System.Data;
 using System.Diagnostics;
 
 namespace BusinessWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IDbConnection _conn;
-
-        // Constructor to inject IDbConnection
-        public HomeController(IDbConnection conn)
-        {
-            _conn = conn;
-        }
-
         // Display the home page with a form for inquiries
         public IActionResult Index()
         {
-            // Create a new Inquiry object with default values 
-            Inquiry model = new Inquiry()
-            {
-                Inquiry_ID = 0,
-                Date = DateTime.Now,
-                Name = "",
-                Phone = "",
-                Email = ""
-            };
+            // Create a new Inquiry object
+            Inquiry model = new Inquiry();
 
             // Display the message stored in TempData
             ViewBag.Message = TempData["Message"];
@@ -41,25 +26,37 @@ namespace BusinessWebsite.Controllers
         [HttpPost]
         public IActionResult InsertInquiryToDatabase(Inquiry inquiryToInsert)
         {
-            // Check if model is valid, meaning that all the required fields are filled out and have valid values
-            if (ModelState.IsValid)
+            // Uses the path to appsettings.json to build the configuration settings using the information stored in appsettings.json.
+            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+
+            // Retrieve connection string
+            var connectionString = configuration.GetConnectionString("client_inquiries");
+
+            // Use the retrieved connection string to perform database operations
+            using (var conn = new MySqlConnection(connectionString))
             {
-                // Insert inquiry data to the database
-                _conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@name, @phone, @email);",
-                    new { name = inquiryToInsert.Name, phone = inquiryToInsert.Phone, email = inquiryToInsert.Email });
+                conn.Open();
 
-                // Use TempData to store message
-                TempData["Message"] = "Your inquiry has been sent.";
+                // Check if model is valid, meaning that all the required fields are filled out and have valid values
+                if (ModelState.IsValid)
+                {
+                    // Insert inquiry data to the database
+                    conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@name, @phone, @email);",
+                        new { name = inquiryToInsert.Name, phone = inquiryToInsert.Phone, email = inquiryToInsert.Email });
 
-                // Redirect to the home page, scroll down to the form, and display the message stored in TempData above the form
+                    // Use TempData to store message
+                    TempData["Message"] = "Your inquiry has been sent.";
+
+                    // Redirect to the home page, scroll down to the form, and display the message stored in TempData above the form
+                    return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
+                }
+
+                // Use TempData to store an error message
+                TempData["Message"] = "All fields are required.";
+
+                // Redirect to the home page, scroll down to the form, and display the error message stored in TempData above the form
                 return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
             }
-
-            // Use TempData to store an error message
-            TempData["Message"] = "All fields are required.";
-
-            // Redirect to the home page, scroll down to the form, and display the error message stored in TempData above the form
-            return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
         }
 
         // Display the portfolio page
