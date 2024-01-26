@@ -1,6 +1,3 @@
-using MySql.Data.MySqlClient;
-using System.Data;
-
 // Create a builder to set up and configure our web application.
 var builder = WebApplication.CreateBuilder(args);
 
