@@ -8,6 +8,53 @@ namespace BusinessWebsite.Controllers
 {
     public class HomeController : Controller
     {
+        // Redirect to the Contact-Us section on the Index page with a specified message
+        private IActionResult ScrollToContactUs(string message)
+        {
+            TempData["Message"] = message;
+            return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
+        }
+
+        // Get the connection string from the appsettings.json file
+        private string GetConnectionString()
+        {
+            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            return configuration.GetConnectionString("client_inquiries")!;
+        }
+
+        // Insert an inquiry into the database
+        private void InsertInquiry(Inquiry inquiryToInsert)
+        {
+            var connectionString = GetConnectionString();
+
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand("INSERT INTO inquiries (name, phone, email) VALUES (@name, @phone, @email);", conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", inquiryToInsert.Name);
+                    cmd.Parameters.AddWithValue("@phone", inquiryToInsert.Phone);
+                    cmd.Parameters.AddWithValue("@email", inquiryToInsert.Email);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        [HttpPost]
+        public IActionResult InsertInquiryToDatabase(Inquiry inquiryToInsert)
+        {
+            if (ModelState.IsValid)
+            {
+                // Insert the inquiry and redirect to the Contact-Us section with a success message
+                InsertInquiry(inquiryToInsert);
+                return ScrollToContactUs("Your inquiry has been sent.");
+            }
+
+            // Redirect to the Contact-Us section with an error message
+            return ScrollToContactUs("All fields are required.");
+        }
+
         // Display the home page with a form for inquiries
         public IActionResult Index()
         {
@@ -19,49 +66,6 @@ namespace BusinessWebsite.Controllers
 
             // Render the home page with a form that has the values of the Inquiry object (so the form displayed will be empty)
             return View(model);
-        }
-
-        // Handle form submission and insert inquiry into the database
-        [HttpPost]
-        public IActionResult InsertInquiryToDatabase(Inquiry inquiryToInsert)
-        {
-            // Uses the path to appsettings.json to build the configuration settings using the information stored in appsettings.json.
-            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-
-            // Retrieve connection string
-            var connectionString = configuration.GetConnectionString("client_inquiries");
-
-            // Use the retrieved connection string to perform database operations
-            using (var conn = new MySqlConnection(connectionString))
-            {
-                conn.Open();
-
-                // Check if model is valid, meaning that all the required fields are filled out and have valid values
-                if (ModelState.IsValid)
-                {
-                    // Insert inquiry data to the database
-                    using (var cmd = new MySqlCommand("INSERT INTO inquiries (name, phone, email) VALUES (@name, @phone, @email);", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@name", inquiryToInsert.Name);
-                        cmd.Parameters.AddWithValue("@phone", inquiryToInsert.Phone);
-                        cmd.Parameters.AddWithValue("@email", inquiryToInsert.Email);
-
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    // Use TempData to store message
-                    TempData["Message"] = "Your inquiry has been sent.";
-
-                    // Redirect to the home page, scroll down to the form, and display the message stored in TempData above the form
-                    return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
-                }
-
-                // Use TempData to store an error message
-                TempData["Message"] = "All fields are required.";
-
-                // Redirect to the home page, scroll down to the form, and display the error message stored in TempData above the form
-                return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
-            }
         }
 
         // Display the portfolio page
