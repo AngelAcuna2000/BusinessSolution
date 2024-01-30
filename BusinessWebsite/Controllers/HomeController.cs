@@ -14,6 +14,20 @@ namespace BusinessWebsite.Controllers
             this.dataHelper = dataHelper;
         }
 
+        // Display the home page with a form for inquiries
+        public IActionResult Index()
+        {
+            // Create a new Inquiry object
+            Inquiry model = new Inquiry();
+
+            // Display the message stored in TempData
+            ViewBag.Message = TempData["Message"];
+
+            // Render the home page with a form that has the values of the Inquiry object
+            // (so the form displayed will be empty)
+            return View(model);
+        }
+
         // Redirect to the Contact-Us section on the Index page with a specified message
         private IActionResult ScrollToContactUs(string message)
         {
@@ -33,20 +47,6 @@ namespace BusinessWebsite.Controllers
 
             // Redirect to the Contact-Us section with an error message
             return ScrollToContactUs("All fields are required.");
-        }
-
-        // Display the home page with a form for inquiries
-        public IActionResult Index()
-        {
-            // Create a new Inquiry object
-            Inquiry model = new Inquiry();
-
-            // Display the message stored in TempData
-            ViewBag.Message = TempData["Message"];
-
-            // Render the home page with a form that has the values of the Inquiry object
-            // (so the form displayed will be empty)
-            return View(model);
         }
 
         // Display the portfolio page
