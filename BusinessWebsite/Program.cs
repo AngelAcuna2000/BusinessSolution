@@ -1,11 +1,6 @@
-using BusinessWebsite;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-
-// Add the DataHelper service
-builder.Services.AddScoped<DataHelper>();
 
 var app = builder.Build();
 

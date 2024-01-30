@@ -2,10 +2,8 @@ using InquiryApp;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-// Create a builder to set up and configure our web application.
 var builder = WebApplication.CreateBuilder(args);
 
-// Register controllers, views, and related services in the ASP.NET Core Dependency Injection (DI) container.
 builder.Services.AddControllersWithViews();
 
 // Get the folder where the application is running (the base directory).

@@ -7,13 +7,6 @@ namespace BusinessWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly DataHelper dataHelper;
-
-        public HomeController(DataHelper dataHelper)
-        {
-            this.dataHelper = dataHelper;
-        }
-
         // Display the home page with a form for inquiries
         public IActionResult Index()
         {
@@ -32,6 +25,9 @@ namespace BusinessWebsite.Controllers
         [HttpPost]
         public IActionResult FormSubmit(Inquiry inquiryToInsert)
         {
+            // Instantiate DataHelper directly
+            var dataHelper = new DataHelper();
+
             if (ModelState.IsValid)
             {
                 // Insert the inquiry
@@ -46,7 +42,6 @@ namespace BusinessWebsite.Controllers
             TempData["Message"] = "All fields are required.";
             return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
         }
-
 
         // Display the portfolio page
         public IActionResult Portfolio()
