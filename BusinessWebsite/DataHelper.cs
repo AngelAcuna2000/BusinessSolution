@@ -14,7 +14,7 @@ namespace BusinessWebsite
         }
 
         // Insert an inquiry into the database using Dapper
-        public void InsertInquiry(Inquiry inquiryToInsert)
+        public void InsertInquiryToDatabase(Inquiry inquiryToInsert)
         {
             var connectionString = GetConnectionString();
 

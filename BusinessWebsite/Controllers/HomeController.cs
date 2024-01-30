@@ -28,26 +28,25 @@ namespace BusinessWebsite.Controllers
             return View(model);
         }
 
-        // Redirect to the Contact-Us section on the Index page with a specified message
-        private IActionResult ScrollToContactUs(string message)
-        {
-            TempData["Message"] = message;
-            return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
-        }
-
+        // Handles form submission: inserts inquiry into the database and redirects with appropriate message
         [HttpPost]
-        public IActionResult InsertInquiryToDatabase(Inquiry inquiryToInsert)
+        public IActionResult FormSubmit(Inquiry inquiryToInsert)
         {
             if (ModelState.IsValid)
             {
-                // Insert the inquiry and redirect to the Contact-Us section with a success message
-                dataHelper.InsertInquiry(inquiryToInsert);
-                return ScrollToContactUs("Your inquiry has been sent.");
+                // Insert the inquiry
+                dataHelper.InsertInquiryToDatabase(inquiryToInsert);
+
+                // Set success message and redirect to the Contact-Us section
+                TempData["Message"] = "Your inquiry has been sent.";
+                return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
             }
 
-            // Redirect to the Contact-Us section with an error message
-            return ScrollToContactUs("All fields are required.");
+            // Set error message and redirect to the Contact-Us section
+            TempData["Message"] = "All fields are required.";
+            return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
         }
+
 
         // Display the portfolio page
         public IActionResult Portfolio()
