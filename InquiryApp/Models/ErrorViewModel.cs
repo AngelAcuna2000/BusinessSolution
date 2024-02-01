@@ -1,4 +1,4 @@
-namespace InquiryApp.Models
+﻿namespace InquiryApp.Models
 {
     public class ErrorViewModel
     {

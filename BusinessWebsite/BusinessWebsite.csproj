@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\Shared\Inquiry.cs" Link="Inquiry.cs" />
+    <Compile Include="..\DatabaseConnectionFactory.cs" Link="DatabaseConnectionFactory.cs" />
+    <Compile Include="..\Shared\InquiryModel.cs" Link="Models\InquiryModel.cs" />
   </ItemGroup>
 
   <ItemGroup>

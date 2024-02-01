@@ -1,4 +1,4 @@
-﻿namespace BusinessWebsite.Models
+﻿namespace Shared.Models.ErrorViewModel
 {
     public class ErrorViewModel
     {

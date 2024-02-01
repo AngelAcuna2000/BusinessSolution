@@ -29,11 +29,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index" asp-fragment="Contact-Us" asp-route-displayMessage="@TempData.ContainsKey("Message")">Contact Us</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index" asp-fragment="Contact-Us" 
+                            asp-route-displayMessage="@TempData.ContainsKey("Message")">Contact Us</a>
                             <!-- The asp-route-displayMessage attribute is added to pass displayMessage as a route parameter.
                                  This ensures that the route triggered by clicking the Contact Us link is different from the
-                                 route triggered when the form submit button is pressed.
-                                 This distinction prevents the previously displayed message from showing when the Contact Us link is clicked.
+                                 route triggered when the form submit button is pressed. This distinction prevents the previously 
+                                 displayed message from showing when the Contact Us link is clicked.
                             -->
                         </li>
                     </ul>

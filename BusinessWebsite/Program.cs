@@ -1,6 +1,12 @@
+using System.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<DatabaseConnectionFactory>();
+
+builder.Services.AddScoped<IDbConnection>(s => s.GetRequiredService<DatabaseConnectionFactory>().CreateConnection());
 
 var app = builder.Build();
 

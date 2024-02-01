@@ -1,6 +1,6 @@
-﻿namespace Shared.Models
+﻿namespace Shared.InquiryModel
 {
-    public class Inquiry
+    public class InquiryModel
     {
         public int Inquiry_ID { get; set; }
         public DateTime Date { get; set; }
@@ -8,7 +8,7 @@
         public string Phone { get; set; }
         public string Email { get; set; }
 
-        public Inquiry()
+        public InquiryModel()
         {
             Inquiry_ID = 0;
             Date = DateTime.Now;

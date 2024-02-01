@@ -84,23 +84,14 @@
         storage house for your needs.
     </p>
 
-    <!-- Display success or error message -->
     @if (ViewBag.Message != null)
     {
-        <!-- Determine the CSS class for the alert based on the message content -->
-        var alertClass = ViewBag.Message == "All fields are required." ? "alert alert-danger" : "alert alert-success";
-
-        <!-- Display the alert div with the determined CSS class -->
-        <div class="@alertClass" role="alert">
-            <!-- Display the actual message content -->
+        <div class="alert @(ViewBag.Message == "All fields are required." ? "alert-danger" : "alert-success")" role="alert">
             @ViewBag.Message
         </div>
     }
 
-
-    <!-- Display the inquiry form -->
     <div id="Contact-Us">
         <partial name="_InquiryForm" />
     </div>
-
 </div>
