@@ -1,5 +1,5 @@
-﻿using Dapper;
-using Shared.InquiryModel;
+﻿using BusinessSolution.Shared.InquiryModel;
+using Dapper;
 using System.Data;
 
 namespace InquiryApp

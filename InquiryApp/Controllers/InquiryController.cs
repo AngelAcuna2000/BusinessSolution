@@ -1,6 +1,6 @@
-﻿using InquiryApp.Models;
+﻿using BusinessSolution.Shared.InquiryModel;
+using InquiryApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using Shared.InquiryModel;
 using System.Diagnostics;
 
 namespace InquiryApp.Controllers

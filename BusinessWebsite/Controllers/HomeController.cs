@@ -1,7 +1,7 @@
-﻿using BusinessWebsite.Models;
+﻿using BusinessSolution.Shared.InquiryModel;
+using BusinessWebsite.Models;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
-using Shared.InquiryModel;
 using System.Data;
 using System.Diagnostics;
 

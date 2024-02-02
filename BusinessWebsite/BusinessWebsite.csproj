@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -11,20 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\DatabaseConnectionFactory.cs" Link="DatabaseConnectionFactory.cs" />
-    <Compile Include="..\Shared\InquiryModel.cs" Link="Models\InquiryModel.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\Shared\appsettings.Development.json" Link="appsettings.Development.json" />
-    <Content Include="..\Shared\appsettings.json" Link="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.28" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="MySql.Data" Version="8.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessSolution.Shared\BusinessSolution.Shared.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
