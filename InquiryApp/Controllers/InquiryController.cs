@@ -17,7 +17,7 @@ namespace InquiryApp.Controllers
         // Display table listing all inquiries and their details in the database
         public IActionResult Index() => View(_repo.GetAllInquiries());
 
-        // Display details of a specific inquiry
+        // Display table with details of a specific inquiry
         public IActionResult ViewInquiry(int id) => View(_repo.GetInquiry(id));
 
         // Display form for updating an inquiry
