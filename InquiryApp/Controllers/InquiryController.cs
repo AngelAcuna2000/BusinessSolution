@@ -14,7 +14,7 @@ namespace InquiryApp.Controllers
             _repo = repo;
         }
 
-        // Display table listing all inquiries and their details in the database
+        // Display table listing all inquiries in the database
         public IActionResult Index() => View(_repo.GetAllInquiries());
 
         // Display table with details of a specific inquiry
