@@ -2,9 +2,9 @@
 using MySql.Data.MySqlClient;
 using System.Data;
 
-public class DatabaseConnectionFactory
+public class DbConnector
 {
-    public IDbConnection CreateConnection()
+    public static IDbConnection CreateConnection()
     {
         var connectionString = new ConfigurationBuilder()
             .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "appsettings.json"))

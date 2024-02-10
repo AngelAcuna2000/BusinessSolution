@@ -5,9 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<DatabaseConnectionFactory>();
+builder.Services.AddScoped<DbConnector>();
 
-builder.Services.AddScoped<IDbConnection>(s => s.GetRequiredService<DatabaseConnectionFactory>().CreateConnection());
+builder.Services.AddScoped<IDbConnection>(s => DbConnector.CreateConnection());
 
 builder.Services.AddScoped<InquiryRepository>();
 
