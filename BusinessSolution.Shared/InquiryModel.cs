@@ -7,14 +7,5 @@
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-
-        public InquiryModel()
-        {
-            Inquiry_ID = 0;
-            Date = DateTime.Now;
-            Name = "";
-            Phone = "";
-            Email = "";
-        }
     }
 }
