@@ -15,19 +15,15 @@ var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Inquiry/Error");
-
-    app.UseHsts();
+    app.UseExceptionHandler("/Inquiry/Error")
+       .UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseHttpsRedirection()
+   .UseStaticFiles()
+   .UseRouting()
+   .UseAuthorization();
 
-app.UseRouting();
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Inquiry}/{action=index}/{id?}");
+app.MapControllerRoute("default", "{controller=Inquiry}/{action=Index}/{id?}");
 
 app.Run();
