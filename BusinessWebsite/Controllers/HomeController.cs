@@ -19,7 +19,6 @@ namespace BusinessWebsite.Controllers
         // Display home page with a form for inquiries
         public IActionResult Index()
         {
-            // Display message stored in TempData 
             ViewBag.Message = TempData["Message"];
 
             return View(new InquiryModel());
