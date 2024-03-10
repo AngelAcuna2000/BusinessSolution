@@ -17,7 +17,8 @@ namespace InquiryApp
             _conn.Query<InquiryModel>("SELECT * FROM inquiries;");
 
         internal InquiryModel GetInquiry(int id) =>
-            _conn.QuerySingle<InquiryModel>("SELECT * FROM inquiries WHERE inquiry_id = @id", new { id });
+            _conn.QuerySingle<InquiryModel>("SELECT * FROM inquiries WHERE inquiry_id = @id", 
+                new { id });
 
         internal void UpdateInquiry(InquiryModel inquiry) =>
             _conn.Execute("UPDATE inquiries SET name = @name, phone = @phone, email = @email WHERE inquiry_id = @id",
