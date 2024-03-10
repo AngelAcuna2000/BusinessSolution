@@ -4,7 +4,6 @@ using System.Data;
 
 namespace InquiryApp
 {
-    // Repository class for handling database operations related to inquiries
     public class InquiryRepository
     {
         private readonly IDbConnection _conn;
@@ -14,23 +13,23 @@ namespace InquiryApp
             _conn = conn;
         }
 
-        public IEnumerable<InquiryModel> GetAllInquiries()
+        internal IEnumerable<InquiryModel> GetAllInquiries()
         {
             return _conn.Query<InquiryModel>("SELECT * FROM inquiries;");
         }
 
-        public InquiryModel GetInquiry(int id)
+        internal InquiryModel GetInquiry(int id)
         {
-            return _conn.QuerySingle<InquiryModel>("SELECT * FROM inquiries WHERE inquiry_id = @id", new { id = id });
+            return _conn.QuerySingle<InquiryModel>("SELECT * FROM inquiries WHERE inquiry_id = @id", new { id });
         }
 
-        public void UpdateInquiry(InquiryModel inquiry)
+        internal void UpdateInquiry(InquiryModel inquiry)
         {
             _conn.Execute("UPDATE inquiries SET name = @name, phone = @phone, email = @email WHERE inquiry_id = @id",
-             new { name = inquiry.Name, phone = inquiry.Phone, email = inquiry.Email, id = inquiry.Inquiry_ID });
+                new { name = inquiry.Name, phone = inquiry.Phone, email = inquiry.Email, id = inquiry.Inquiry_ID });
         }
 
-        public void DeleteInquiry(InquiryModel inquiry)
+        internal void DeleteInquiry(InquiryModel inquiry)
         {
             _conn.Execute("DELETE FROM inquiries WHERE inquiry_id = @id;", new { id = inquiry.Inquiry_ID });
         }
