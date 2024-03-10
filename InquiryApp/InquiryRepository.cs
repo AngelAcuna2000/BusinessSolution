@@ -24,6 +24,7 @@ namespace InquiryApp
                 new { name = inquiry.Name, phone = inquiry.Phone, email = inquiry.Email, id = inquiry.Inquiry_ID });
 
         internal void DeleteInquiry(InquiryModel inquiry) =>
-            _conn.Execute("DELETE FROM inquiries WHERE inquiry_id = @id;", new { id = inquiry.Inquiry_ID });
+            _conn.Execute("DELETE FROM inquiries WHERE inquiry_id = @id;", 
+                new { id = inquiry.Inquiry_ID });
     }
 }
