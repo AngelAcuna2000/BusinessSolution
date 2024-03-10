@@ -15,13 +15,16 @@ namespace InquiryApp.Controllers
         }
 
         // Display table listing all inquiries in the database
-        public IActionResult Index() => View(_repo.GetAllInquiries());
+        public IActionResult Index() => 
+            View(_repo.GetAllInquiries());
 
         // Display table with details of a specific inquiry
-        public IActionResult ViewInquiry(int id) => View(_repo.GetInquiry(id));
+        public IActionResult ViewInquiry(int id) => 
+            View(_repo.GetInquiry(id));
 
         // Display form for updating an inquiry
-        public IActionResult UpdateInquiry(int id) => View(_repo.GetInquiry(id));
+        public IActionResult UpdateInquiry(int id) => 
+            View(_repo.GetInquiry(id));
 
         // Update inquiry in the database and display the updated details
         [HttpPost]
@@ -29,7 +32,8 @@ namespace InquiryApp.Controllers
         {
             _repo.UpdateInquiry(inquiry);
 
-            return RedirectToAction(nameof(ViewInquiry), new { id = inquiry.Inquiry_ID });
+            return RedirectToAction(nameof(ViewInquiry), 
+                new { id = inquiry.Inquiry_ID });
         }
 
         // Delete selected inquiry and display the updated table with all remaining inquiries
