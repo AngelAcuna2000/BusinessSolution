@@ -1,4 +1,4 @@
-﻿using BusinessSolution.Shared.InquiryModel;
+﻿using BusinessSolutionShared;
 using BusinessWebsite.Models;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;

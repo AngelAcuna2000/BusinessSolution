@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessWebsite", "Business
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InquiryApp", "InquiryApp\InquiryApp.csproj", "{76526AB3-9EFF-47FF-AAD6-970BFAB93609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessSolution.Shared", "BusinessSolution.Shared\BusinessSolution.Shared.csproj", "{83A1B49C-748F-49F5-9F40-AE96522F574E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessSolutionShared", "BusinessSolution.Shared\BusinessSolutionShared.csproj", "{83A1B49C-748F-49F5-9F40-AE96522F574E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,3 +1,4 @@
+using BusinessSolutionShared;
 using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);

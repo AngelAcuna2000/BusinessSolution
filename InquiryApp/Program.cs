@@ -1,3 +1,4 @@
+using BusinessSolutionShared;
 using InquiryApp;
 using System.Data;
 

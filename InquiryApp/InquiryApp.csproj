@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessSolution.Shared\BusinessSolution.Shared.csproj" />
+    <ProjectReference Include="..\BusinessSolution.Shared\BusinessSolutionShared.csproj" />
   </ItemGroup>
 
 </Project>

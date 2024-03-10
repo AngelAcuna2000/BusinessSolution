@@ -1,4 +1,4 @@
-﻿using BusinessSolution.Shared.InquiryModel;
+﻿using BusinessSolutionShared;
 using Dapper;
 using System.Data;
 
