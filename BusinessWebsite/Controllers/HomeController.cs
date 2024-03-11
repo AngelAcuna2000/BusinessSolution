@@ -42,12 +42,20 @@ namespace BusinessWebsite.Controllers
             return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
         }
 
-        public IActionResult Portfolio() => View();
+        public IActionResult Portfolio()
+        {
+            return View();
+        } 
 
-        public IActionResult Privacy() => View();
+        public IActionResult Privacy()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error() => 
-            View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        } 
     }
 }
