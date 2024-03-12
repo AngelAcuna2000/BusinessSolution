@@ -18,7 +18,6 @@ namespace InquiryApp
             return _conn.Query<InquiryModel>("SELECT * FROM inquiries;");
         }
        
-
         internal InquiryModel GetInquiry(int id)
         {
             return _conn.QuerySingle<InquiryModel>("SELECT * FROM inquiries WHERE inquiry_id = @id",
@@ -31,7 +30,6 @@ namespace InquiryApp
                 new { name = inquiry.Name, phone = inquiry.Phone, email = inquiry.Email, id = inquiry.Inquiry_ID });
         } 
             
-
         internal void DeleteInquiry(InquiryModel inquiry)
         {
             _conn.Execute("DELETE FROM inquiries WHERE inquiry_id = @id;",
