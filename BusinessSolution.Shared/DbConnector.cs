@@ -14,6 +14,7 @@ namespace BusinessSolutionShared
                 .GetConnectionString("client_inquiries");
 
             var connection = new MySqlConnection(connectionString);
+            
             connection.Open();
 
             return connection;
