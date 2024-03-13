@@ -1,14 +1,24 @@
 using BusinessSolutionShared;
 using InquiryApp;
+using MySql.Data.MySqlClient;
 using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<ConfigurationBuilder>();
+
+builder.Services.AddScoped<MySqlConnection>();
+
 builder.Services.AddScoped<DbConnector>();
 
-builder.Services.AddScoped<IDbConnection>(s => DbConnector.CreateConnection());
+builder.Services.AddScoped<IDbConnection>(s =>
+{
+    var dbConnector = s.GetRequiredService<DbConnector>();
+
+    return dbConnector.CreateConnection();
+});
 
 builder.Services.AddScoped<InquiryRepository>();
 

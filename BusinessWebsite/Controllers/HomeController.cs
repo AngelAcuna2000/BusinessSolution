@@ -11,9 +11,13 @@ namespace BusinessWebsite.Controllers
     {
         private readonly IDbConnection _conn;
 
-        public HomeController(IDbConnection conn)
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(IDbConnection conn, ILogger<HomeController> logger)
         {
             _conn = conn;
+
+            _logger = logger;
         }
 
         // Display home page with a form for inquiries
@@ -28,15 +32,26 @@ namespace BusinessWebsite.Controllers
         [HttpPost]
         public IActionResult FormSubmit(InquiryModel inquiryToInsert)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                TempData["Message"] = "All fields are required.";
+
+                return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
+            }
+
+            try
             {
                 _conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@Name, @Phone, @Email);", inquiryToInsert);
 
                 TempData["Message"] = "Your inquiry has been sent.";
             }
-            else
+            catch (Exception ex)
             {
-                TempData["Message"] = "All fields are required.";
+                // Log the exception
+                _logger.LogError(ex, "Error occurred while submitting an inquiry.");
+
+                // Redirect to the Error action to display the error view
+                return RedirectToAction("Error");
             }
 
             return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
@@ -45,7 +60,7 @@ namespace BusinessWebsite.Controllers
         public IActionResult Portfolio()
         {
             return View();
-        } 
+        }
 
         public IActionResult Privacy()
         {
@@ -56,6 +71,6 @@ namespace BusinessWebsite.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        } 
+        }
     }
 }

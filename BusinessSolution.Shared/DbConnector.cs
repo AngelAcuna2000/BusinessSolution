@@ -6,18 +6,36 @@ namespace BusinessSolutionShared
 {
     public class DbConnector
     {
-        public static IDbConnection CreateConnection()
+        private readonly ConfigurationBuilder _configBuilder;
+
+        private readonly MySqlConnection _con;
+
+        public DbConnector(ConfigurationBuilder configBuilder, MySqlConnection con)
         {
-            var connectionString = new ConfigurationBuilder()
-                .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "appsettings.json"))
-                .Build()
-                .GetConnectionString("client_inquiries");
+            _configBuilder = configBuilder;
 
-            var connection = new MySqlConnection(connectionString);
-            
-            connection.Open();
+            _con = con;
+        }
 
-            return connection;
+        public IDbConnection CreateConnection()
+        {
+            try
+            {
+                var conString = _configBuilder
+                    .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "appsettings.json"))
+                    .Build()
+                    .GetConnectionString("client_inquiries");
+
+                _con.ConnectionString = conString;
+
+                _con.Open();
+
+                return _con;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error creating DB connection", ex);
+            }
         }
     }
 }
