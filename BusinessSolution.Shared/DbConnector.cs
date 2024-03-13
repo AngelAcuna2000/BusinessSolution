@@ -19,22 +19,37 @@ namespace BusinessSolutionShared
 
         public IDbConnection CreateConnection()
         {
+            var conString = GetConnectionString();
+
+            SetConnection(conString);
+
+            OpenConnection();
+
+            return _con;
+        }
+
+        private string GetConnectionString()
+        {
+            return _configBuilder
+                .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "appsettings.json"))
+                .Build()
+                .GetConnectionString("client_inquiries");
+        }
+
+        private void SetConnection(string connectionString)
+        {
+            _con.ConnectionString = connectionString;
+        }
+
+        private void OpenConnection()
+        {
             try
             {
-                var conString = _configBuilder
-                    .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "appsettings.json"))
-                    .Build()
-                    .GetConnectionString("client_inquiries");
-
-                _con.ConnectionString = conString;
-
                 _con.Open();
-
-                return _con;
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error creating DB connection", ex);
+                throw new ApplicationException("Error opening DB connection", ex);
             }
         }
     }
