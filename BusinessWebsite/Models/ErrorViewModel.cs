@@ -1,12 +1,8 @@
-﻿namespace BusinessWebsite.Models
-{
-    public class ErrorViewModel
-    {
-        public string? RequestId { get; set; }
+﻿namespace BusinessWebsite.Models;
 
-        public bool ShowRequestId
-        {
-            get { return !string.IsNullOrEmpty(RequestId); }
-        }
-    }
+public class ErrorViewModel
+{
+    public string? RequestId { get; set; }
+
+    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 }
