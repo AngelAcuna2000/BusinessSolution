@@ -6,13 +6,13 @@ namespace BusinessSolutionShared;
 
 public class DbConnector
 {
-    private readonly ConfigurationBuilder _configBuilder;
+    private readonly IConfiguration _configuration;
 
     private readonly MySqlConnection _con;
 
-    public DbConnector(ConfigurationBuilder configBuilder, MySqlConnection con)
+    public DbConnector(IConfiguration configuration, MySqlConnection con)
     {
-        _configBuilder = configBuilder;
+        _configuration = configuration;
 
         _con = con;
     }
@@ -30,11 +30,11 @@ public class DbConnector
 
     private string? GetConnectionString() =>
 
-        _configBuilder.AddJsonFile(Path.Combine(AppContext.BaseDirectory, "appsettings.json"))
-                      .Build()
-                      .GetConnectionString("client_inquiries");
+        _configuration.GetConnectionString("client_inquiries");
 
-    private void SetConnection(string? connectionString) => _con.ConnectionString = connectionString;
+    private void SetConnection(string? connectionString) =>
+
+        _con.ConnectionString = connectionString ?? throw new InvalidOperationException("Connection string cannot be null.");
 
     private void OpenConnection()
     {
