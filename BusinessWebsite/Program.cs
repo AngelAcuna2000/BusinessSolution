@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<ConfigurationBuilder>();
+builder.Services.AddSingleton<ConfigurationBuilder>();
 
 builder.Services.AddScoped<MySqlConnection>();
 
