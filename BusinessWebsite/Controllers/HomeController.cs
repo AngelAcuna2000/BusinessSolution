@@ -1,4 +1,4 @@
-﻿using BusinessSolutionShared;
+﻿using BusinessSolution;
 using BusinessWebsite.Models;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
@@ -47,10 +47,8 @@ public class HomeController : Controller
         }
         catch (Exception ex)
         {
-            // Log the exception
             _logger.LogError(ex, "Error occurred while submitting an inquiry.");
 
-            // Redirect to the Error action to display the error view
             return RedirectToAction("Error");
         }
 

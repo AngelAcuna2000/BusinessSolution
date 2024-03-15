@@ -1,4 +1,4 @@
-﻿using BusinessSolutionShared;
+﻿using BusinessSolution;
 using InquiryApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;

@@ -1,4 +1,4 @@
-﻿namespace BusinessSolutionShared;
+﻿namespace BusinessSolution;
 
 public class InquiryModel
 {

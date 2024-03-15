@@ -1,8 +1,6 @@
-﻿using BusinessSolutionShared;
+﻿using BusinessSolution;
 using Dapper;
 using System.Data;
-
-namespace InquiryApp;
 
 public class InquiryRepository
 {
