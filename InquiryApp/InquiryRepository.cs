@@ -2,6 +2,7 @@
 using Dapper;
 using System.Data;
 
+namespace InquiryApp;
 public class InquiryRepository
 {
     private readonly IDbConnection _conn;
