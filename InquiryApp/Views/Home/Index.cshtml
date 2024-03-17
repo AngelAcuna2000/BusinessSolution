@@ -15,7 +15,7 @@
     @foreach (var inquiry in @Model)
     {
         <tr>
-            <td><a href=/Inquiry/ViewInquiry/@inquiry.Inquiry_ID>@inquiry.Inquiry_ID</a></td>
+            <td><a href=/Home/ViewInquiry/@inquiry.Inquiry_ID>@inquiry.Inquiry_ID</a></td>
             <td>@inquiry.Date.ToString("MM/dd/yyyy")</td>
             <td>@inquiry.Name</td>
             <td>@inquiry.Phone</td>

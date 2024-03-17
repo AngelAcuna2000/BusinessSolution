@@ -18,20 +18,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Angel/OneDrive/Desktop/repos/BusinessSolution/InquiryApp/Views/Inquiry/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlyeVxJbmRleC5jc2h0bWw=
+[C:/Users/Angel/OneDrive/Desktop/repos/BusinessSolution/InquiryApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Angel/OneDrive/Desktop/repos/BusinessSolution/InquiryApp/Views/Inquiry/UpdateInquiry.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlyeVxVcGRhdGVJbnF1aXJ5LmNzaHRtbA==
+[C:/Users/Angel/OneDrive/Desktop/repos/BusinessSolution/InquiryApp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Angel/OneDrive/Desktop/repos/BusinessSolution/InquiryApp/Views/Inquiry/ViewInquiry.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlyeVxWaWV3SW5xdWlyeS5jc2h0bWw=
+[C:/Users/Angel/OneDrive/Desktop/repos/BusinessSolution/InquiryApp/Views/Home/UpdateInquiry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGRhdGVJbnF1aXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Angel/OneDrive/Desktop/repos/BusinessSolution/InquiryApp/Views/Privacy/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpdmFjeVxQcml2YWN5LmNzaHRtbA==
+[C:/Users/Angel/OneDrive/Desktop/repos/BusinessSolution/InquiryApp/Views/Home/ViewInquiry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3SW5xdWlyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Angel/OneDrive/Desktop/repos/BusinessSolution/InquiryApp/Views/Shared/Error.cshtml]

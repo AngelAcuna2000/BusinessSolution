@@ -5,11 +5,11 @@ using System.Diagnostics;
 
 namespace InquiryApp.Controllers;
 
-public class InquiryController : Controller
+public class HomeController : Controller
 {
     private readonly InquiryRepository _repo;
 
-    public InquiryController(InquiryRepository repo) => _repo = repo;
+    public HomeController(InquiryRepository repo) => _repo = repo;
 
     // Display table listing all inquiries in the database
     public IActionResult Index() => View(_repo.GetAllInquiries());
@@ -40,6 +40,8 @@ public class InquiryController : Controller
 
         return RedirectToAction(nameof(Index));
     }
+
+    public IActionResult Privacy() => View();
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

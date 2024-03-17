@@ -36,6 +36,6 @@ app.UseHttpsRedirection()
    .UseRouting()
    .UseAuthorization();
 
-app.MapControllerRoute("default", "{controller=Inquiry}/{action=Index}/{id?}");
+app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

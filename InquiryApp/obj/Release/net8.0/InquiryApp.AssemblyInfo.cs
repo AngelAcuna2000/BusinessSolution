@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InquiryApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d228a31091917fe03dc60da87c613af0212640f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71b6b5ab7272f9ffab4d076b75cfa4a14eb0dd13")]
 [assembly: System.Reflection.AssemblyProductAttribute("InquiryApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InquiryApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

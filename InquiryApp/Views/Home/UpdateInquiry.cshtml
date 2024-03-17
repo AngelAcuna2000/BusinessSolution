@@ -4,7 +4,7 @@
 <!-- Display form to update an inquiry -->
 <h2>Update @Model.Name</h2>
 
-@using (Html.BeginForm("UpdateInquiryToDatabase", "Inquiry", "Post"))
+@using (Html.BeginForm("UpdateInquiryToDatabase", "Home", "Post"))
 {
     <input asp-for="Inquiry_ID" type="hidden" value="@Model.Inquiry_ID" />
     <input asp-for="Date" type="hidden" value="@Model.Date" />

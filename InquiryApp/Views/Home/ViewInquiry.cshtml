@@ -20,11 +20,11 @@
 </table>
 
 <div style="display: block">
-    <a href="/Inquiry/UpdateInquiry/@Model.Inquiry_ID">Update this inquiry</a>
+    <a href="/Home/UpdateInquiry/@Model.Inquiry_ID">Update this inquiry</a>
 </div>
 
 <div style="display: block">
-    @using (Html.BeginForm("DeleteInquiry", "Inquiry", "Post"))
+    @using (Html.BeginForm("DeleteInquiry", "Home", "Post"))
     {
         <input type="hidden" asp-for="Inquiry_ID" value="@Model.Inquiry_ID" />
         <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this inquiry" />
