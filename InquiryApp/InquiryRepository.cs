@@ -23,12 +23,12 @@ public class InquiryRepository
                       + "phone = @phone, "
                       + "email = @email WHERE inquiry_id = @id",
                        new
-                        {
-                        name = inquiry.Name,
-                        phone = inquiry.Phone, 
-                        email = inquiry.Email, 
-                        id = inquiry.Inquiry_ID 
-                        });
+                       {
+                           name = inquiry.Name,
+                           phone = inquiry.Phone,
+                           email = inquiry.Email,
+                           id = inquiry.Inquiry_ID
+                       });
 
     internal void DeleteInquiry(InquiryModel inquiry) =>
 
