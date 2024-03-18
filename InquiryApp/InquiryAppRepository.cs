@@ -4,19 +4,19 @@ using System.Data;
 
 namespace InquiryApp;
 
-public class InquiryRepository
+public class InquiryAppRepository : IInquiryAppRepository
 {
     private readonly IDbConnection _conn;
 
-    public InquiryRepository(IDbConnection conn) => _conn = conn;
+    public InquiryAppRepository(IDbConnection conn) => _conn = conn;
 
-    internal IEnumerable<InquiryModel> GetAllInquiries() => _conn.Query<InquiryModel>("SELECT * FROM inquiries;");
+    public IEnumerable<InquiryModel> GetAllInquiries() => _conn.Query<InquiryModel>("SELECT * FROM inquiries;");
 
-    internal InquiryModel GetInquiry(int id) =>
+    public InquiryModel GetInquiry(int id) =>
 
         _conn.QuerySingle<InquiryModel>("SELECT * FROM inquiries WHERE inquiry_id = @id", new { id });
 
-    internal void UpdateInquiry(InquiryModel inquiry) =>
+    public void UpdateInquiry(InquiryModel inquiry) =>
 
         _conn.Execute("UPDATE inquiries SET "
                       + "name = @name, "
@@ -30,7 +30,7 @@ public class InquiryRepository
                            id = inquiry.Inquiry_ID
                        });
 
-    internal void DeleteInquiry(InquiryModel inquiry) =>
+    public void DeleteInquiry(InquiryModel inquiry) =>
 
         _conn.Execute("DELETE FROM inquiries WHERE inquiry_id = @id;",
                       new { id = inquiry.Inquiry_ID });

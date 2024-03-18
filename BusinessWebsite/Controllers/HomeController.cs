@@ -1,23 +1,17 @@
 ﻿using BusinessSolution;
 using BusinessWebsite.Models;
-using Dapper;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using System.Diagnostics;
 
 namespace BusinessWebsite.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly IDbConnection _conn;
+    private readonly IBusinessWebsiteRepository _repo;
 
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(IDbConnection conn, ILogger<HomeController> logger)
+    public HomeController(IBusinessWebsiteRepository repo, ILogger<HomeController> logger)
     {
-        _conn = conn;
-
-        _logger = logger;
+        _repo = repo;
     }
 
     // Display home page with a form for inquiries
@@ -39,20 +33,14 @@ public class HomeController : Controller
             return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
         }
 
-        try
+        if (_repo.InsertInquiry(inquiryToInsert))
         {
-            _conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@Name, @Phone, @Email);", inquiryToInsert);
-
             TempData["Message"] = "Your inquiry has been sent.";
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error occurred while submitting an inquiry.");
 
-            return RedirectToAction("Error");
+            return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
         }
 
-        return LocalRedirect(Url.Action("Index", "Home") + "#Contact-Us");
+        return RedirectToAction("Error");
     }
 
     public IActionResult Portfolio() => View();

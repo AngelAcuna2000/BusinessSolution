@@ -21,7 +21,7 @@ builder.Services.AddScoped<IDbConnection>(provider =>
     return connection;
 });
 
-builder.Services.AddScoped<InquiryRepository>();
+builder.Services.AddScoped<IInquiryAppRepository, InquiryAppRepository>();
 
 var app = builder.Build();
 

@@ -1,3 +1,4 @@
+using BusinessWebsite;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Reflection;
@@ -19,6 +20,8 @@ builder.Services.AddScoped<IDbConnection>(provider =>
 
     return connection;
 });
+
+builder.Services.AddScoped<IBusinessWebsiteRepository, BusinessWebsiteRepository>();
 
 var app = builder.Build();
 
