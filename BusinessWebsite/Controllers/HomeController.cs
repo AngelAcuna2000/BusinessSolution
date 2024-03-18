@@ -9,7 +9,7 @@ public class HomeController : Controller
 {
     private readonly IBusinessWebsiteRepository _repo;
 
-    public HomeController(IBusinessWebsiteRepository repo, ILogger<HomeController> logger)
+    public HomeController(IBusinessWebsiteRepository repo)
     {
         _repo = repo;
     }
