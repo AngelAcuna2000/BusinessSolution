@@ -1,11 +1,11 @@
-﻿using BusinessSolution;
+﻿using BusinessSolutionShared;
 
 namespace InquiryApp;
 
 public interface IInquiryAppRepository
 {
     IEnumerable<InquiryModel> GetAllInquiries();
-    InquiryModel GetInquiry(int id);
-    void UpdateInquiry(InquiryModel inquiry);
-    void DeleteInquiry(InquiryModel inquiry);
+    InquiryModel? GetInquiry(int id);
+    bool UpdateInquiry(InquiryModel inquiry);
+    bool DeleteInquiry(InquiryModel inquiry);
 }

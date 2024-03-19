@@ -1,4 +1,4 @@
-﻿using BusinessSolution;
+﻿using BusinessSolutionShared;
 
 namespace BusinessWebsite;
 

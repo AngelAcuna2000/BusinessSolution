@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ZDbYcUEEee2j9IaNhxfacM/NPMyCWNtFxO+UNhQqV9cyFJ4WFHuVsT6YhQkcCC73wVtDbVh4b3M/D4K6/XnKqg==",
+  "dgSpecHash": "IWw7bf0oQ/hatGWnWZurhzKpCLvZa5xbXetAf2eHplSDHBY2pvOvU/VYNPw/dhkr8vWPYHADo7Cm9nR83ekBRw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Angel\\OneDrive\\Desktop\\repos\\BusinessSolution\\InquiryApp\\InquiryApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Angel\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
-    "C:\\Users\\Angel\\.nuget\\packages\\dapper\\2.1.28\\dapper.2.1.28.nupkg.sha512",
+    "C:\\Users\\Angel\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\Angel\\.nuget\\packages\\google.protobuf\\3.25.1\\google.protobuf.3.25.1.nupkg.sha512",
     "C:\\Users\\Angel\\.nuget\\packages\\k4os.compression.lz4\\1.3.5\\k4os.compression.lz4.1.3.5.nupkg.sha512",
     "C:\\Users\\Angel\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.5\\k4os.compression.lz4.streams.1.3.5.nupkg.sha512",

@@ -1,3 +1,4 @@
+using BusinessSolutionShared;
 using BusinessWebsite;
 using MySql.Data.MySqlClient;
 using System.Data;
@@ -20,6 +21,8 @@ builder.Services.AddScoped<IDbConnection>(provider =>
 
     return connection;
 });
+
+builder.Services.AddScoped<IDapperWrapper, DapperWrapper>();
 
 builder.Services.AddScoped<IBusinessWebsiteRepository, BusinessWebsiteRepository>();
 

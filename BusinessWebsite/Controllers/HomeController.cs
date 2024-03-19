@@ -1,18 +1,13 @@
-﻿using BusinessSolution;
+﻿using BusinessSolutionShared;
 using BusinessWebsite.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace BusinessWebsite.Controllers;
 
-public class HomeController : Controller
+public class HomeController(IBusinessWebsiteRepository repo) : Controller
 {
-    private readonly IBusinessWebsiteRepository _repo;
-
-    public HomeController(IBusinessWebsiteRepository repo)
-    {
-        _repo = repo;
-    }
+    private readonly IBusinessWebsiteRepository _repo = repo;
 
     // Display home page with a form for inquiries
     public IActionResult Index()

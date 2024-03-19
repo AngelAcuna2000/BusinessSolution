@@ -1,27 +1,25 @@
-﻿using BusinessSolution;
-using Dapper;
+﻿using BusinessSolutionShared;
 using System.Data;
 
 namespace BusinessWebsite;
 
-public class BusinessWebsiteRepository : IBusinessWebsiteRepository
+public class BusinessWebsiteRepository(IDapperWrapper dapperWrapper,
+
+    ILogger<BusinessWebsiteRepository> logger,
+
+    IDbConnection conn) : IBusinessWebsiteRepository
 {
-    private readonly IDbConnection _conn;
+    private readonly IDapperWrapper _dapperWrapper = dapperWrapper;
 
-    private readonly ILogger<BusinessWebsiteRepository> _logger;
+    private readonly ILogger<BusinessWebsiteRepository> _logger = logger;
 
-    public BusinessWebsiteRepository(IDbConnection conn, ILogger<BusinessWebsiteRepository> logger)
-    {
-        _conn = conn;
-
-        _logger = logger;
-    }
+    private readonly IDbConnection _conn = conn;
 
     public bool InsertInquiry(InquiryModel inquiry)
     {
         try
         {
-            _conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@Name, @Phone, @Email);", inquiry);
+            _dapperWrapper.Execute(_conn, "INSERT INTO inquiries (name, phone, email) VALUES (@Name, @Phone, @Email);", inquiry);
 
             return true;
         }

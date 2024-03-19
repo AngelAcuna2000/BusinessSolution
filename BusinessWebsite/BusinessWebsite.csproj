@@ -11,11 +11,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Dapper" Version="2.1.28" />
-		<PackageReference Include="MySql.Data" Version="8.3.0" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\BusinessSolutionShared\BusinessSolutionShared.csproj" />
 	</ItemGroup>
 
@@ -23,6 +18,10 @@
 		<Content Include="..\BusinessSolutionShared\appsettings.json" Link="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="MySql.Data" Version="8.3.0" />
 	</ItemGroup>
 
 </Project>

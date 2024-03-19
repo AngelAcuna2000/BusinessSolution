@@ -1,37 +1,83 @@
-﻿using BusinessSolution;
-using Dapper;
+﻿using BusinessSolutionShared;
 using System.Data;
 
 namespace InquiryApp;
 
-public class InquiryAppRepository : IInquiryAppRepository
+public class InquiryAppRepository(IDapperWrapper dapperWrapper,
+
+    ILogger<InquiryAppRepository> logger,
+
+    IDbConnection conn) : IInquiryAppRepository
 {
-    private readonly IDbConnection _conn;
+    private readonly IDapperWrapper _dapperWrapper = dapperWrapper;
 
-    public InquiryAppRepository(IDbConnection conn) => _conn = conn;
+    private readonly ILogger<InquiryAppRepository> _logger = logger;
 
-    public IEnumerable<InquiryModel> GetAllInquiries() => _conn.Query<InquiryModel>("SELECT * FROM inquiries;");
+    private readonly IDbConnection _conn = conn;
 
-    public InquiryModel GetInquiry(int id) =>
+    public IEnumerable<InquiryModel> GetAllInquiries()
+    {
+        try
+        {
+            return _dapperWrapper.Query<InquiryModel>(_conn, "SELECT * FROM inquiries;");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while retrieving all inquiries.");
 
-        _conn.QuerySingle<InquiryModel>("SELECT * FROM inquiries WHERE inquiry_id = @id", new { id });
+            return [];
+        }
+    }
 
-    public void UpdateInquiry(InquiryModel inquiry) =>
+    public InquiryModel? GetInquiry(int id)
+    {
+        try
+        {
+            return _dapperWrapper.QuerySingle<InquiryModel>(_conn, "SELECT * FROM inquiries WHERE inquiry_id = @id", new { id });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while retrieving an inquiry with ID {id}", id);
 
-        _conn.Execute("UPDATE inquiries SET "
-                      + "name = @name, "
-                      + "phone = @phone, "
-                      + "email = @email WHERE inquiry_id = @id",
-                       new
-                       {
-                           name = inquiry.Name,
-                           phone = inquiry.Phone,
-                           email = inquiry.Email,
-                           id = inquiry.Inquiry_ID
-                       });
+            return null;
+        }
+    }
 
-    public void DeleteInquiry(InquiryModel inquiry) =>
+    public bool UpdateInquiry(InquiryModel inquiry)
+    {
+        try
+        {
+            _dapperWrapper.Execute(_conn, "UPDATE inquiries SET name = @Name, "
 
-        _conn.Execute("DELETE FROM inquiries WHERE inquiry_id = @id;",
-                      new { id = inquiry.Inquiry_ID });
+                + "phone = @Phone, "
+
+                + "email = @Email WHERE "
+
+                + "inquiry_id = @Inquiry_ID", inquiry);
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while updating an inquiry with ID {id}", inquiry.Inquiry_ID);
+
+            return false;
+        }
+    }
+
+    public bool DeleteInquiry(InquiryModel inquiry)
+    {
+        try
+        {
+            _dapperWrapper.Execute(_conn, "DELETE FROM inquiries WHERE inquiry_id = @Inquiry_ID;", new { inquiry.Inquiry_ID });
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while deleting an inquiry with ID {id}", inquiry.Inquiry_ID);
+
+            return false;
+        }
+    }
 }
