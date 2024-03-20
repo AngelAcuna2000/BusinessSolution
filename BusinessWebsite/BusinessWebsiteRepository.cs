@@ -3,10 +3,9 @@ using System.Data;
 
 namespace BusinessWebsite;
 
-public class BusinessWebsiteRepository(IDapperWrapper dapperWrapper,
-
+public class BusinessWebsiteRepository(
+    IDapperWrapper dapperWrapper,
     ILogger<BusinessWebsiteRepository> logger,
-
     IDbConnection conn) : IBusinessWebsiteRepository
 {
     private readonly IDapperWrapper _dapperWrapper = dapperWrapper;

@@ -7,32 +7,22 @@ namespace BusinessWebsite.Tests;
 
 public class BusinessWebsiteTests
 {
-    private readonly Mock<IDapperWrapper> _mockDapperWrapper;
+    private readonly Mock<IDapperWrapper> _mockDapperWrapper = new();
 
-    private readonly Mock<IDbConnection> _mockConn;
+    private readonly Mock<IDbConnection> _mockConn = new();
 
-    private readonly ILogger<BusinessWebsiteRepository> _logger;
+    private readonly ILogger<BusinessWebsiteRepository> _logger = new Mock<ILogger<BusinessWebsiteRepository>>().Object;
 
     private readonly BusinessWebsiteRepository _repository;
 
     public BusinessWebsiteTests()
     {
-        _mockDapperWrapper = new Mock<IDapperWrapper>();
-
-        _mockConn = new Mock<IDbConnection>();
-
-        _logger = new Mock<ILogger<BusinessWebsiteRepository>>().Object;
-
-        _mockDapperWrapper.Setup(d => d.Execute(It.IsAny<IDbConnection>(),
-
+        _mockDapperWrapper.Setup(d => d.Execute(
+            It.IsAny<IDbConnection>(),
             It.IsAny<string>(),
-
             It.IsAny<object>(),
-
             null,
-
             null,
-
             null)).Returns(1);
 
         _repository = new BusinessWebsiteRepository(_mockDapperWrapper.Object, _logger, _mockConn.Object);
@@ -46,9 +36,9 @@ public class BusinessWebsiteTests
         {
             Name = "Test",
 
-            Phone = "1234567890", 
+            Phone = "123-456-7890",
 
-            Email = "test@example.com" 
+            Email = "test@example.com"
         };
 
         // Act
@@ -66,23 +56,19 @@ public class BusinessWebsiteTests
         {
             Name = "Test",
 
-            Phone = "1234567890", 
+            Phone = "123-456-7890", 
 
             Email = "test@example.com" 
         };
 
         var exception = new Exception("Database error");
 
-        _mockDapperWrapper.Setup(d => d.Execute(It.IsAny<IDbConnection>(),
-
+        _mockDapperWrapper.Setup(d => d.Execute(
+            It.IsAny<IDbConnection>(),
             It.IsAny<string>(),
-
             It.IsAny<object>(),
-
             null,
-
             null,
-
             null)).Throws(exception);
 
         // Act

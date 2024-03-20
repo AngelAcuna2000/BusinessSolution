@@ -3,10 +3,9 @@ using System.Data;
 
 namespace InquiryApp;
 
-public class InquiryAppRepository(IDapperWrapper dapperWrapper,
-
+public class InquiryAppRepository(
+    IDapperWrapper dapperWrapper,
     ILogger<InquiryAppRepository> logger,
-
     IDbConnection conn) : IInquiryAppRepository
 {
     private readonly IDapperWrapper _dapperWrapper = dapperWrapper;
@@ -47,12 +46,10 @@ public class InquiryAppRepository(IDapperWrapper dapperWrapper,
     {
         try
         {
-            _dapperWrapper.Execute(_conn, "UPDATE inquiries SET name = @Name, "
-
+            _dapperWrapper.Execute(_conn, "UPDATE inquiries SET "
+                + "name = @Name, "
                 + "phone = @Phone, "
-
                 + "email = @Email WHERE "
-
                 + "inquiry_id = @Inquiry_ID", inquiry);
 
             return true;

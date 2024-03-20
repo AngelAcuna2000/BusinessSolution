@@ -7,22 +7,16 @@ namespace InquiryApp.Tests;
 
 public class InquiryAppRepositoryTests
 {
-    private readonly Mock<IDapperWrapper> _mockDapperWrapper;
+    private readonly Mock<IDapperWrapper> _mockDapperWrapper = new();
 
-    private readonly Mock<IDbConnection> _mockConn;
+    private readonly Mock<IDbConnection> _mockConn = new();
 
-    private readonly Mock<ILogger<InquiryAppRepository>> _mockLogger;
+    private readonly Mock<ILogger<InquiryAppRepository>> _mockLogger = new();
 
     private readonly InquiryAppRepository _repository;
 
     public InquiryAppRepositoryTests()
     {
-        _mockDapperWrapper = new Mock<IDapperWrapper>();
-
-        _mockConn = new Mock<IDbConnection>();
-
-        _mockLogger = new Mock<ILogger<InquiryAppRepository>>();
-
         _repository = new InquiryAppRepository(_mockDapperWrapper.Object, _mockLogger.Object, _mockConn.Object);
     }
 
@@ -32,19 +26,8 @@ public class InquiryAppRepositoryTests
         // Arrange
         var expectedInquiries = new List<InquiryModel> { new(), new() };
 
-        _mockDapperWrapper.Setup(d => d.Query<InquiryModel>(_mockConn.Object,
-
-            "SELECT * FROM inquiries;",
-
-            null,
-
-            null,
-
-            true,
-
-            null,
-
-            null)).Returns(expectedInquiries);
+        _mockDapperWrapper.Setup(d => d.Query<InquiryModel>(
+            _mockConn.Object, "SELECT * FROM inquiries;", null, null, true, null, null)).Returns(expectedInquiries);
 
         // Act
         var inquiries = _repository.GetAllInquiries();
@@ -57,19 +40,8 @@ public class InquiryAppRepositoryTests
     public void GetAllInquiries_FailureReturnsEmptyCollection()
     {
         // Arrange
-        _mockDapperWrapper.Setup(d => d.Query<InquiryModel>(_mockConn.Object,
-
-            "SELECT * FROM inquiries;",
-
-            null,
-
-            null,
-
-            true,
-
-            null,
-
-            null)).Throws(new Exception());
+        _mockDapperWrapper.Setup(d => d.Query<InquiryModel>(
+            _mockConn.Object, "SELECT * FROM inquiries;", null, null, true, null, null)).Throws(new Exception());
 
         // Act
         var inquiries = _repository.GetAllInquiries();
@@ -93,16 +65,12 @@ public class InquiryAppRepositoryTests
             Phone = "1234567890"
         };
 
-        _mockDapperWrapper.Setup(d => d.QuerySingle<InquiryModel>(_mockConn.Object,
-
+        _mockDapperWrapper.Setup(d => d.QuerySingle<InquiryModel>(
+            _mockConn.Object,
             It.IsAny<string>(),
-
             It.IsAny<object>(),
-
             It.IsAny<IDbTransaction>(),
-
             It.IsAny<int?>(),
-
             It.IsAny<CommandType?>())).Returns(expectedInquiry);
 
         // Act
@@ -116,16 +84,12 @@ public class InquiryAppRepositoryTests
     public void GetInquiry_FailureReturnsNull()
     {
         // Arrange
-        _mockDapperWrapper.Setup(d => d.QuerySingle<InquiryModel>(_mockConn.Object,
-
+        _mockDapperWrapper.Setup(d => d.QuerySingle<InquiryModel>(
+            _mockConn.Object,
             "SELECT * FROM inquiries WHERE inquiry_id = @id",
-
             new { id = 1 },
-
             null,
-
             null,
-
             null)).Throws(new Exception());
 
         // Act
@@ -141,24 +105,16 @@ public class InquiryAppRepositoryTests
         // Arrange
         var inquiryToUpdate = new InquiryModel { Inquiry_ID = 1 };
 
-        _mockDapperWrapper.Setup(d => d.Execute(_mockConn.Object,
-
+        _mockDapperWrapper.Setup(d => d.Execute(
+            _mockConn.Object,
             "UPDATE inquiries SET "
-
             + "name = @Name, "
-
             + "phone = @Phone, "
-
             + "email = @Email WHERE "
-
             + "inquiry_id = @Inquiry_ID",
-
             inquiryToUpdate,
-
             null,
-
             null,
-
             null)).Returns(1);
 
         // Act
@@ -174,24 +130,16 @@ public class InquiryAppRepositoryTests
         // Arrange
         var inquiryToUpdate = new InquiryModel { Inquiry_ID = 1 };
 
-        _mockDapperWrapper.Setup(d => d.Execute(_mockConn.Object,
-
+        _mockDapperWrapper.Setup(d => d.Execute(
+            _mockConn.Object,
             "UPDATE inquiries SET "
-
             + "name = @Name, "
-
             + "phone = @Phone, "
-
             + "email = @Email WHERE "
-
             + "inquiry_id = @Inquiry_ID",
-
             inquiryToUpdate,
-
             null,
-
             null,
-
             null)).Throws(new Exception());
 
         // Act
@@ -207,16 +155,12 @@ public class InquiryAppRepositoryTests
         // Arrange
         var inquiryToDelete = new InquiryModel { Inquiry_ID = 1 };
 
-        _mockDapperWrapper.Setup(d => d.Execute(_mockConn.Object,
-
+        _mockDapperWrapper.Setup(d => d.Execute(
+            _mockConn.Object,
             "DELETE FROM inquiries WHERE inquiry_id = @Inquiry_ID;",
-
             new { Inquiry_ID = 1 },
-
             null,
-
             null,
-
             null)).Returns(1);
 
         // Act
@@ -232,16 +176,12 @@ public class InquiryAppRepositoryTests
         // Arrange
         var inquiryToDelete = new InquiryModel { Inquiry_ID = 1 };
 
-        _mockDapperWrapper.Setup(d => d.Execute(_mockConn.Object,
-
+        _mockDapperWrapper.Setup(d => d.Execute(
+            _mockConn.Object,
             It.IsAny<string>(),
-
             It.IsAny<object>(),
-
             It.IsAny<IDbTransaction>(),
-
             It.IsAny<int?>(),
-
             It.IsAny<CommandType?>())).Throws(new Exception());
 
         // Act
