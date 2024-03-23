@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InquiryApp", "InquiryApp\In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessSolutionShared", "BusinessSolutionShared\BusinessSolutionShared.csproj", "{81469C0A-EF80-48D3-88E4-FE4504480525}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessWebsite.Tests", "BusinessWebsite.Tests\BusinessWebsite.Tests.csproj", "{795B5B19-9235-49E9-BC1C-6835032A4991}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessWebsite.Tests", "BusinessWebsite.Tests\BusinessWebsite.Tests.csproj", "{795B5B19-9235-49E9-BC1C-6835032A4991}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InquiryApp.Tests", "InquiryApp.Tests\InquiryApp.Tests.csproj", "{23C0308A-FFA1-4BE3-ADB2-E687AAEA054D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InquiryApp.Tests", "InquiryApp.Tests\InquiryApp.Tests.csproj", "{23C0308A-FFA1-4BE3-ADB2-E687AAEA054D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

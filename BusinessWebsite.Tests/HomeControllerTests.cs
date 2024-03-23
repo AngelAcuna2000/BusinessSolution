@@ -113,6 +113,24 @@ public class HomeControllerTests
     }
 
     [Fact]
+    public void FormSubmit_InsertionFails_RedirectsToError()
+    {
+        // Arrange
+        var inquiryModel = new InquiryModel { Name = "Test", Email = "test@example.com", Phone = "123-456-7890" };
+
+        _mockRepo.Setup(repo => repo.InsertInquiry(inquiryModel)).Returns(false);
+
+        // Act
+        var result = _controller.FormSubmit(inquiryModel);
+
+        // Assert
+        var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+
+        Assert.Equal("Error", redirectResult.ActionName);
+    }
+
+
+    [Fact]
     public void Portfolio_ReturnsView()
     {
         // Act
@@ -133,10 +151,30 @@ public class HomeControllerTests
     }
 
     [Fact]
-    public void Error_ReturnsViewWithErrorViewModel()
+    public void Error_ReturnsViewWithErrorViewModel_UsingActivityId()
     {
         // Arrange
-        Activity.Current = new Activity("TestActivity");
+        var activity = new Activity("TestActivity").Start();
+
+        // Act
+        var result = _controller.Error();
+
+        // Assert
+        var viewResult = Assert.IsType<ViewResult>(result);
+
+        var model = Assert.IsAssignableFrom<ErrorViewModel>(viewResult.Model);
+
+        Assert.Equal(activity.Id, model.RequestId);
+
+        activity.Stop();
+    }
+
+    [Fact]
+    public void Error_ReturnsViewWithErrorViewModel_UsingTraceIdentifier()
+    {
+        // Arrange
+        Activity.Current = null;
+        _controller.ControllerContext.HttpContext.TraceIdentifier = "TestTraceIdentifier";
 
         // Act
         var result = _controller.Error();

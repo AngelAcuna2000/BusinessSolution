@@ -81,22 +81,43 @@ public class InquiryAppRepositoryTests
     }
 
     [Fact]
-    public void GetInquiry_FailureReturnsNull()
+    public void GetInquiry_FailureLogsErrorAndReturnsNull()
     {
         // Arrange
+        var exception = new Exception("Database error");
+
+        var inquiryId = 1;
+
         _mockDapperWrapper.Setup(d => d.QuerySingle<InquiryModel>(
             _mockConn.Object,
-            "SELECT * FROM inquiries WHERE inquiry_id = @id",
-            new { id = 1 },
-            null,
-            null,
-            null)).Throws(new Exception());
+            It.IsAny<string>(),
+            It.IsAny<object>(),
+            It.IsAny<IDbTransaction>(),
+            It.IsAny<int?>(),
+            It.IsAny<CommandType?>())).Throws(exception);
+
+        _mockLogger.Setup(logger =>
+            logger.Log(
+                LogLevel.Error,
+                It.IsAny<EventId>(),
+                It.Is<It.IsAnyType>((v, t) => true),
+                It.IsAny<Exception?>(), 
+                It.IsAny<Func<It.IsAnyType, Exception?, string>>()))
+            .Verifiable();
 
         // Act
-        var inquiry = _repository.GetInquiry(1);
+        var inquiry = _repository.GetInquiry(inquiryId);
 
         // Assert
         Assert.Null(inquiry);
+        _mockLogger.Verify(
+            x => x.Log(
+                LogLevel.Error,
+                It.IsAny<EventId>(),
+                It.Is<It.IsAnyType>((v, t) => true),
+                exception, 
+                It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
+            Times.Once); 
     }
 
     [Fact]
