@@ -31,9 +31,9 @@ public class HomeControllerTests
 
     private static TempDataDictionary GetTempData()
     {
-        var tempDataProvider = new Mock<ITempDataProvider>();
+        var mockTempDataProvider = new Mock<ITempDataProvider>();
 
-        var tempDataDictionaryFactory = new TempDataDictionaryFactory(tempDataProvider.Object);
+        var tempDataDictionaryFactory = new TempDataDictionaryFactory(mockTempDataProvider.Object);
 
         return (TempDataDictionary)tempDataDictionaryFactory.GetTempData(new DefaultHttpContext());
     }
@@ -55,7 +55,7 @@ public class HomeControllerTests
 
     private static void SetupUrlHelper(Mock<IUrlHelper> mockUrlHelper, Controller controller)
     {
-        mockUrlHelper.Setup(x => x.Action(It.IsAny<UrlActionContext>())).Returns("/Home/Index#Contact-Us");
+        mockUrlHelper.Setup(urlHelper => urlHelper.Action(It.IsAny<UrlActionContext>())).Returns("/Home/Index#Contact-Us");
 
         controller.Url = mockUrlHelper.Object;
     }
@@ -80,7 +80,7 @@ public class HomeControllerTests
 
         var inquiryModel = new InquiryModel();
 
-        _mockUrlHelper.Setup(x => x.Action(It.IsAny<UrlActionContext>())).Returns("/Home/Index");
+        _mockUrlHelper.Setup(urlHelper => urlHelper.Action(It.IsAny<UrlActionContext>())).Returns("/Home/Index");
 
         // Act
         var result = _controller.FormSubmit(inquiryModel);
@@ -99,7 +99,7 @@ public class HomeControllerTests
 
         _mockRepo.Setup(repo => repo.InsertInquiry(inquiryModel)).Returns(true);
 
-        _mockUrlHelper.Setup(x => x.Action(It.IsAny<UrlActionContext>())).Returns("/Home/Index");
+        _mockUrlHelper.Setup(urlHelper => urlHelper.Action(It.IsAny<UrlActionContext>())).Returns("/Home/Index");
 
         // Act
         var result = _controller.FormSubmit(inquiryModel);

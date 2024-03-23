@@ -34,9 +34,9 @@ public class HomeControllerTests
 
     private static TempDataDictionary GetTempData()
     {
-        var tempDataProvider = new Mock<ITempDataProvider>();
+        var mockTempDataProvider = new Mock<ITempDataProvider>();
 
-        var tempDataDictionaryFactory = new TempDataDictionaryFactory(tempDataProvider.Object);
+        var tempDataDictionaryFactory = new TempDataDictionaryFactory(mockTempDataProvider.Object);
 
         return (TempDataDictionary)tempDataDictionaryFactory.GetTempData(new DefaultHttpContext());
     }
@@ -52,22 +52,22 @@ public class HomeControllerTests
             }
         };
 
-        var serviceProvider = new Mock<IServiceProvider>();
+        var mockServiceProvider = new Mock<IServiceProvider>();
 
-        serviceProvider
-            .Setup(x => x.GetService(typeof(IUrlHelperFactory)))
+        mockServiceProvider
+            .Setup(serviceProvider => serviceProvider.GetService(typeof(IUrlHelperFactory)))
             .Returns(_mockUrlHelperFactory.Object);
 
-        controller.ControllerContext.HttpContext.RequestServices = serviceProvider.Object;
+        controller.ControllerContext.HttpContext.RequestServices = mockServiceProvider.Object;
 
         return controller;
     }
 
     private void SetupUrlHelper(Mock<IUrlHelper> mockUrlHelper, Controller controller)
     {
-        mockUrlHelper.Setup(x => x.Action(It.IsAny<UrlActionContext>())).Returns("/Home/Index#Contact-Us");
+        mockUrlHelper.Setup(urlHelper => urlHelper.Action(It.IsAny<UrlActionContext>())).Returns("/Home/Index#Contact-Us");
 
-        _mockUrlHelperFactory.Setup(f => f.GetUrlHelper(It.IsAny<ActionContext>())).Returns(mockUrlHelper.Object);
+        _mockUrlHelperFactory.Setup(urlHelperFactory => urlHelperFactory.GetUrlHelper(It.IsAny<ActionContext>())).Returns(mockUrlHelper.Object);
 
         controller.Url = mockUrlHelper.Object;
     }
@@ -76,7 +76,7 @@ public class HomeControllerTests
     public void Index_ReturnsViewWithInquiries()
     {
         // Arrange
-        var inquiries = new List<InquiryModel> { new InquiryModel(), new InquiryModel() };
+        var inquiries = new List<InquiryModel> { new(), new() };
 
         _mockRepo.Setup(repo => repo.GetAllInquiries()).Returns(inquiries);
 

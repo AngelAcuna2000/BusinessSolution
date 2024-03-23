@@ -15,7 +15,7 @@ public class BusinessWebsiteRepositoryTests
 
     public BusinessWebsiteRepositoryTests()
     {
-        _mockDapperWrapper.Setup(d => d.Execute(
+        _mockDapperWrapper.Setup(dapperWrapper => dapperWrapper.Execute(
             It.IsAny<IDbConnection>(),
             It.IsAny<string>(),
             It.IsAny<object>(),
@@ -23,9 +23,9 @@ public class BusinessWebsiteRepositoryTests
             null,
             null)).Returns(1);
 
-        var logger = Mock.Of<ILogger<BusinessWebsiteRepository>>();
+        var mockLogger = Mock.Of<ILogger<BusinessWebsiteRepository>>();
 
-        _repository = new BusinessWebsiteRepository(_mockDapperWrapper.Object, logger, _mockConn.Object);
+        _repository = new BusinessWebsiteRepository(_mockDapperWrapper.Object, mockLogger, _mockConn.Object);
     }
 
     [Fact]
@@ -47,7 +47,7 @@ public class BusinessWebsiteRepositoryTests
         // Arrange
         var inquiry = new InquiryModel { Name = "Test", Phone = "123-456-7890", Email = "test@example.com" };
 
-        _mockDapperWrapper.Setup(d => d.Execute(
+        _mockDapperWrapper.Setup(dapperWrapper => dapperWrapper.Execute(
             It.IsAny<IDbConnection>(),
             It.IsAny<string>(),
             It.IsAny<object>(),
