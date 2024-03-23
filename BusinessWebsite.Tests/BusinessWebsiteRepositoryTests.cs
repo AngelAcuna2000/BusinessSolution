@@ -1,21 +1,19 @@
-using BusinessSolutionShared;
+﻿using BusinessSolutionShared;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System.Data;
 
 namespace BusinessWebsite.Tests;
 
-public class BusinessWebsiteTests
+public class BusinessWebsiteRepositoryTests
 {
     private readonly Mock<IDapperWrapper> _mockDapperWrapper = new();
 
     private readonly Mock<IDbConnection> _mockConn = new();
 
-    private readonly ILogger<BusinessWebsiteRepository> _logger = new Mock<ILogger<BusinessWebsiteRepository>>().Object;
-
     private readonly BusinessWebsiteRepository _repository;
 
-    public BusinessWebsiteTests()
+    public BusinessWebsiteRepositoryTests()
     {
         _mockDapperWrapper.Setup(d => d.Execute(
             It.IsAny<IDbConnection>(),
@@ -25,21 +23,16 @@ public class BusinessWebsiteTests
             null,
             null)).Returns(1);
 
-        _repository = new BusinessWebsiteRepository(_mockDapperWrapper.Object, _logger, _mockConn.Object);
+        var logger = Mock.Of<ILogger<BusinessWebsiteRepository>>();
+
+        _repository = new BusinessWebsiteRepository(_mockDapperWrapper.Object, logger, _mockConn.Object);
     }
 
     [Fact]
     public void InsertInquiry_SuccessReturnsTrue()
     {
         // Arrange
-        var inquiry = new InquiryModel
-        {
-            Name = "Test",
-
-            Phone = "123-456-7890",
-
-            Email = "test@example.com"
-        };
+        var inquiry = new InquiryModel { Name = "Test", Phone = "123-456-7890", Email = "test@example.com" };
 
         // Act
         var result = _repository.InsertInquiry(inquiry);
@@ -52,16 +45,7 @@ public class BusinessWebsiteTests
     public void InsertInquiry_FailureReturnsFalse()
     {
         // Arrange
-        var inquiry = new InquiryModel
-        {
-            Name = "Test",
-
-            Phone = "123-456-7890", 
-
-            Email = "test@example.com" 
-        };
-
-        var exception = new Exception("Database error");
+        var inquiry = new InquiryModel { Name = "Test", Phone = "123-456-7890", Email = "test@example.com" };
 
         _mockDapperWrapper.Setup(d => d.Execute(
             It.IsAny<IDbConnection>(),
@@ -69,7 +53,7 @@ public class BusinessWebsiteTests
             It.IsAny<object>(),
             null,
             null,
-            null)).Throws(exception);
+            null)).Throws(new Exception("Database error"));
 
         // Act
         var result = _repository.InsertInquiry(inquiry);
