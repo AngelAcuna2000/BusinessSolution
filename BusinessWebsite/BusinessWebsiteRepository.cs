@@ -9,16 +9,15 @@ public class BusinessWebsiteRepository(
     IDbConnection conn) : IBusinessWebsiteRepository
 {
     private readonly IDapperWrapper _dapperWrapper = dapperWrapper;
-
     private readonly ILogger<BusinessWebsiteRepository> _logger = logger;
-
     private readonly IDbConnection _conn = conn;
 
     public bool InsertInquiry(InquiryModel inquiry)
     {
         try
         {
-            _dapperWrapper.Execute(_conn, "INSERT INTO inquiries (name, phone, email) VALUES (@Name, @Phone, @Email);", inquiry);
+            _dapperWrapper.Execute(
+                _conn, "INSERT INTO inquiries (name, phone, email) VALUES (@Name, @Phone, @Email);", inquiry);
 
             return true;
         }

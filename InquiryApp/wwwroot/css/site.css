@@ -21,6 +21,16 @@ body {
     margin-bottom: 60px;
 }
 
+.delete-button {
+    background: none; /* Removes the background */
+    border: none; /* Removes the border */
+    padding: 0; /* Removes padding */
+}
+
+    .delete-button .fa-trash-can {
+        color: red; /* Makes the trash can icon red */
+    }
+
 a[href*="/Inquiry/UpdateInquiry"] {
     display: block;
     margin-bottom: 0.5rem;

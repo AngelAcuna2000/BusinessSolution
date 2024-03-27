@@ -20,12 +20,4 @@ public interface IDapperWrapper
         bool buffered = true,
         int? commandTimeout = null,
         CommandType? commandType = null);
-
-    T QuerySingle<T>(
-        IDbConnection? conn,
-        string? sql,
-        object? param = null,
-        IDbTransaction? transaction = null,
-        int? commandTimeout = null,
-        CommandType? commandType = null);
 }

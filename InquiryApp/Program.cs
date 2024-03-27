@@ -6,8 +6,10 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.SetBasePath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!)
-                     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+    ?? throw new InvalidOperationException("The base path cannot be determined.");
+
+builder.Configuration.SetBasePath(basePath).AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 builder.Services.AddControllersWithViews();
 

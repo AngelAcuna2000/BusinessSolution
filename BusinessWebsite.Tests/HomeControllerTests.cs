@@ -13,11 +13,8 @@ namespace BusinessWebsite.Tests;
 public class HomeControllerTests
 {
     private readonly HomeController _controller;
-
     private readonly Mock<IBusinessWebsiteRepository> _mockRepo = new();
-
     private readonly Mock<IUrlHelper> _mockUrlHelper = new();
-
     private readonly TempDataDictionary _tempData;
 
     public HomeControllerTests()
@@ -40,22 +37,26 @@ public class HomeControllerTests
 
     private static HomeController CreateController(IBusinessWebsiteRepository repo, ITempDataDictionary tempData)
     {
-        var controller = new HomeController(repo)
-        {
-            TempData = tempData,
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = new DefaultHttpContext { TraceIdentifier = "TestTraceIdentifier" }
-            }
-        };
-        controller.ControllerContext.HttpContext.RequestServices = new Mock<IServiceProvider>().Object;
+        var controller = new HomeController(repo) { TempData = tempData };
+
+        var httpContext = new DefaultHttpContext { TraceIdentifier = "TestTraceIdentifier" };
+
+        var controllerContext = new ControllerContext { HttpContext = httpContext };
+
+        var serviceProviderMock = new Mock<IServiceProvider>().Object;
+
+        httpContext.RequestServices = serviceProviderMock;
+
+        controller.ControllerContext = controllerContext;
 
         return controller;
     }
 
+
     private static void SetupUrlHelper(Mock<IUrlHelper> mockUrlHelper, Controller controller)
     {
-        mockUrlHelper.Setup(urlHelper => urlHelper.Action(It.IsAny<UrlActionContext>())).Returns("/Home/Index#Contact-Us");
+        mockUrlHelper.Setup(urlHelper => urlHelper.Action(It.IsAny<UrlActionContext>()))
+            .Returns("/Home/Index#Contact-Us");
 
         controller.Url = mockUrlHelper.Object;
     }
@@ -95,7 +96,12 @@ public class HomeControllerTests
     public void FormSubmit_ValidModel_ReturnsRedirectWithSuccessMessage()
     {
         // Arrange
-        var inquiryModel = new InquiryModel { Name = "Test", Email = "test@example.com", Phone = "123-456-7890" };
+        var inquiryModel = new InquiryModel
+        {
+            Name = "Test",
+            Email = "test@example.com",
+            Phone = "123-456-7890"
+        };
 
         _mockRepo.Setup(repo => repo.InsertInquiry(inquiryModel)).Returns(true);
 
@@ -116,7 +122,12 @@ public class HomeControllerTests
     public void FormSubmit_InsertionFails_RedirectsToError()
     {
         // Arrange
-        var inquiryModel = new InquiryModel { Name = "Test", Email = "test@example.com", Phone = "123-456-7890" };
+        var inquiryModel = new InquiryModel
+        {
+            Name = "Test",
+            Email = "test@example.com",
+            Phone = "123-456-7890"
+        };
 
         _mockRepo.Setup(repo => repo.InsertInquiry(inquiryModel)).Returns(false);
 
@@ -128,7 +139,6 @@ public class HomeControllerTests
 
         Assert.Equal("Error", redirectResult.ActionName);
     }
-
 
     [Fact]
     public void Portfolio_ReturnsView()
@@ -174,6 +184,7 @@ public class HomeControllerTests
     {
         // Arrange
         Activity.Current = null;
+
         _controller.ControllerContext.HttpContext.TraceIdentifier = "TestTraceIdentifier";
 
         // Act

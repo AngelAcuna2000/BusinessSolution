@@ -14,50 +14,7 @@ public class HomeController(IInquiryAppRepository repo) : Controller
     {
         var inquiries = _repo.GetAllInquiries();
 
-        if (inquiries.Any())
-        {
-            return View(inquiries);
-        }
-
-        return RedirectToAction("Error");
-    }
-
-    // Display table with details of a specific inquiry
-    public IActionResult ViewInquiry(int id)
-    {
-        var inquiry = _repo.GetInquiry(id);
-
-        if (inquiry != null)
-        {
-            return View(inquiry);
-        }
-
-        return RedirectToAction("Error");
-    }
-
-    // Display form for updating an inquiry
-    public IActionResult UpdateInquiry(int id)
-    {
-        var inquiry = _repo.GetInquiry(id);
-
-        if (inquiry != null)
-        {
-            return View(inquiry);
-        }
-
-        return RedirectToAction("Error");
-    }
-
-    // Update inquiry in the database and display the updated details
-    [HttpPost]
-    public IActionResult UpdateInquiryToDatabase(InquiryModel inquiry)
-    {
-        if (_repo.UpdateInquiry(inquiry))
-        {
-            return RedirectToAction(nameof(ViewInquiry), new { id = inquiry.Inquiry_ID });
-        }
-
-        return RedirectToAction("Error");
+        return View(inquiries);
     }
 
     // Delete selected inquiry and display the updated table with all remaining inquiries

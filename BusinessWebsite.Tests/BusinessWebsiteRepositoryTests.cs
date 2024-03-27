@@ -8,9 +8,7 @@ namespace BusinessWebsite.Tests;
 public class BusinessWebsiteRepositoryTests
 {
     private readonly Mock<IDapperWrapper> _mockDapperWrapper = new();
-
     private readonly Mock<IDbConnection> _mockConn = new();
-
     private readonly BusinessWebsiteRepository _repository;
 
     public BusinessWebsiteRepositoryTests()
@@ -32,7 +30,13 @@ public class BusinessWebsiteRepositoryTests
     public void InsertInquiry_SuccessReturnsTrue()
     {
         // Arrange
-        var inquiry = new InquiryModel { Name = "Test", Phone = "123-456-7890", Email = "test@example.com" };
+        var inquiry = new InquiryModel
+        {
+            Name = "Test",
+            Phone = "123-456-7890",
+            Email = "test@example.com",
+            Date = DateTime.UtcNow
+        };
 
         // Act
         var result = _repository.InsertInquiry(inquiry);
@@ -45,7 +49,12 @@ public class BusinessWebsiteRepositoryTests
     public void InsertInquiry_FailureReturnsFalse()
     {
         // Arrange
-        var inquiry = new InquiryModel { Name = "Test", Phone = "123-456-7890", Email = "test@example.com" };
+        var inquiry = new InquiryModel
+        {
+            Name = "Test",
+            Phone = "123-456-7890",
+            Email = "test@example.com",
+        };
 
         _mockDapperWrapper.Setup(dapperWrapper => dapperWrapper.Execute(
             It.IsAny<IDbConnection>(),

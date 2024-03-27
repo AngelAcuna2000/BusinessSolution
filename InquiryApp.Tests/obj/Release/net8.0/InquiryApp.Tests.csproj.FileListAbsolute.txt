@@ -14,6 +14,7 @@ C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Rele
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\InquiryApp.Tests.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\InquiryApp.Tests.pdb
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\Castle.Core.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\Dapper.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\Google.Protobuf.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\K4os.Compression.LZ4.dll
@@ -28,6 +29,7 @@ C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Rele
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\Microsoft.TestPlatform.Utilities.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\Microsoft.VisualStudio.TestPlatform.Common.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\Moq.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\MySql.Data.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\Newtonsoft.Json.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\NuGet.Frameworks.dll
@@ -132,5 +134,3 @@ C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\obj\Rele
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\obj\Release\net8.0\InquiryApp.Tests.pdb
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\obj\Release\net8.0\InquiryApp.Tests.genruntimeconfig.cache
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\obj\Release\net8.0\ref\InquiryApp.Tests.dll
-C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\Castle.Core.dll
-C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\InquiryApp.Tests\bin\Release\net8.0\Moq.dll

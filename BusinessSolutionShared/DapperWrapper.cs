@@ -35,19 +35,4 @@ public class DapperWrapper : IDapperWrapper
 
         return conn.Query<T>(sql, param, transaction, buffered, commandTimeout, commandType);
     }
-
-    public T QuerySingle<T>(
-        IDbConnection? conn,
-        string? sql,
-        object? param = null,
-        IDbTransaction? transaction = null,
-        int? commandTimeout = null,
-        CommandType? commandType = null)
-    {
-        ArgumentNullException.ThrowIfNull(conn);
-
-        ArgumentNullException.ThrowIfNull(sql);
-
-        return conn.QuerySingle<T>(sql, param, transaction, commandTimeout, commandType);
-    }
 }

@@ -1,6 +1,8 @@
+C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\bin\Release\net8.0\appsettings.json
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\bin\Release\net8.0\BusinessSolutionShared.deps.json
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\bin\Release\net8.0\BusinessSolutionShared.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\bin\Release\net8.0\BusinessSolutionShared.pdb
+C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\obj\Release\net8.0\BusinessSolutionShared.csproj.AssemblyReference.cache
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\obj\Release\net8.0\BusinessSolutionShared.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\obj\Release\net8.0\BusinessSolutionShared.AssemblyInfoInputs.cache
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\obj\Release\net8.0\BusinessSolutionShared.AssemblyInfo.cs
@@ -10,5 +12,3 @@ C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\ob
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\obj\Release\net8.0\refint\BusinessSolutionShared.dll
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\obj\Release\net8.0\BusinessSolutionShared.pdb
 C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\obj\Release\net8.0\ref\BusinessSolutionShared.dll
-C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\bin\Release\net8.0\appsettings.json
-C:\Users\Angel\OneDrive\Desktop\repos\BusinessSolution\BusinessSolutionShared\obj\Release\net8.0\BusinessSolutionShared.csproj.AssemblyReference.cache
