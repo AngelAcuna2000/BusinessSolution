@@ -4,8 +4,6 @@ using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// No need to set the base path when appsettings.json is inside the project
-
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 builder.Services.AddControllersWithViews();
