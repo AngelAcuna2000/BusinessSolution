@@ -1,15 +1,12 @@
-using BusinessSolutionShared;
-using BusinessWebsite;
+using LARemodeling;
 using MySql.Data.MySqlClient;
 using System.Data;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) 
-    ?? throw new InvalidOperationException("The base path cannot be determined.");
+// No need to set the base path when appsettings.json is inside the project
 
-builder.Configuration.SetBasePath(basePath).AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 builder.Services.AddControllersWithViews();
 
@@ -26,7 +23,7 @@ builder.Services.AddScoped<IDbConnection>(provider =>
 
 builder.Services.AddScoped<IDapperWrapper, DapperWrapper>();
 
-builder.Services.AddScoped<IBusinessWebsiteRepository, BusinessWebsiteRepository>();
+builder.Services.AddScoped<ILARemodelingRepo, LARemodelingRepo>();
 
 var app = builder.Build();
 

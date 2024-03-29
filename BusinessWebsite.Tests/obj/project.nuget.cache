@@ -1,13 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "OxOWhJArMGXUCkylkDzj6T08ePPxlnAI/lz+YekDYxvLnrRN5N8kF0HYUWKRUjY4/7KlassfToKFizs1D/mVrw==",
+  "dgSpecHash": "pcvOa5FB6solB9/L3ol28OaX8mwP/DSwXTfMP+7tFo8O5Io3+1PbX+d/Y5Fqpve7sXhULZ9g+xoiFlffn+xsvA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Angel\\OneDrive\\Desktop\\repos\\BusinessSolution\\BusinessWebsite.Tests\\BusinessWebsite.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Angel\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Angel\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Angel\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
-    "C:\\Users\\Angel\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\Angel\\.nuget\\packages\\google.protobuf\\3.25.1\\google.protobuf.3.25.1.nupkg.sha512",
     "C:\\Users\\Angel\\.nuget\\packages\\k4os.compression.lz4\\1.3.5\\k4os.compression.lz4.1.3.5.nupkg.sha512",
     "C:\\Users\\Angel\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.5\\k4os.compression.lz4.streams.1.3.5.nupkg.sha512",

@@ -1,4 +1,4 @@
-﻿namespace BusinessWebsite.Models;
+﻿namespace LARemodeling.Models;
 
 public class ErrorViewModel
 {

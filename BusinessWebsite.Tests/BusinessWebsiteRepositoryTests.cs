@@ -9,7 +9,7 @@ public class BusinessWebsiteRepositoryTests
 {
     private readonly Mock<IDapperWrapper> _mockDapperWrapper = new();
     private readonly Mock<IDbConnection> _mockConn = new();
-    private readonly BusinessWebsiteRepository _repository;
+    private readonly LARemodelingRepo _repository;
 
     public BusinessWebsiteRepositoryTests()
     {
@@ -21,9 +21,9 @@ public class BusinessWebsiteRepositoryTests
             null,
             null)).Returns(1);
 
-        var mockLogger = Mock.Of<ILogger<BusinessWebsiteRepository>>();
+        var mockLogger = Mock.Of<ILogger<LARemodelingRepo>>();
 
-        _repository = new BusinessWebsiteRepository(_mockDapperWrapper.Object, mockLogger, _mockConn.Object);
+        _repository = new LARemodelingRepo(_mockDapperWrapper.Object, mockLogger, _mockConn.Object);
     }
 
     [Fact]

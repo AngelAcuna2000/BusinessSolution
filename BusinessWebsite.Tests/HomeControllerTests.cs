@@ -13,7 +13,7 @@ namespace BusinessWebsite.Tests;
 public class HomeControllerTests
 {
     private readonly HomeController _controller;
-    private readonly Mock<IBusinessWebsiteRepository> _mockRepo = new();
+    private readonly Mock<ILARemodelingRepo> _mockRepo = new();
     private readonly Mock<IUrlHelper> _mockUrlHelper = new();
     private readonly TempDataDictionary _tempData;
 
@@ -35,7 +35,7 @@ public class HomeControllerTests
         return (TempDataDictionary)tempDataDictionaryFactory.GetTempData(new DefaultHttpContext());
     }
 
-    private static HomeController CreateController(IBusinessWebsiteRepository repo, ITempDataDictionary tempData)
+    private static HomeController CreateController(ILARemodelingRepo repo, ITempDataDictionary tempData)
     {
         var controller = new HomeController(repo) { TempData = tempData };
 

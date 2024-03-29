@@ -1,13 +1,13 @@
-﻿using BusinessSolutionShared;
-using BusinessWebsite.Models;
+﻿using LARemodeling;
+using LARemodeling.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace BusinessWebsite.Controllers;
 
-public class HomeController(IBusinessWebsiteRepository repo) : Controller
+public class HomeController(ILARemodelingRepo repo) : Controller
 {
-    private readonly IBusinessWebsiteRepository _repo = repo;
+    private readonly ILARemodelingRepo _repo = repo;
 
     // Display home page with a form for inquiries
     public IActionResult Index()
@@ -41,6 +41,25 @@ public class HomeController(IBusinessWebsiteRepository repo) : Controller
     public IActionResult Portfolio() => View();
 
     public IActionResult Privacy() => View();
+
+    public IActionResult InquiryManager()
+    {
+        var inquiries = _repo.GetAllInquiries();
+
+        return View(inquiries);
+    }
+
+    // Delete selected inquiry and display the updated table with all remaining inquiries
+    [HttpPost]
+    public IActionResult DeleteInquiry(InquiryModel inquiry)
+    {
+        if (_repo.DeleteInquiry(inquiry))
+        {
+            return RedirectToAction(nameof(InquiryManager));
+        }
+
+        return RedirectToAction("Error");
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error() => 
