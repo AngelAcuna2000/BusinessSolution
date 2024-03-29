@@ -13,7 +13,8 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">L&A Remodeling</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -23,18 +24,22 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Portfolio">Portfolio</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" 
+                            asp-action="Portfolio">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" 
+                            asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index" asp-fragment="Contact-Us"
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index" 
+                            asp-fragment="Contact-Us"
                                asp-route-displayMessage="@TempData.ContainsKey("Message")">Contact Us</a>
-                            <!-- The asp-route-displayMessage attribute is added to pass displayMessage as a route parameter.
-                                 This ensures that the route triggered by clicking the Contact Us link is different from the
-                                 route triggered when the form submit button is pressed. This distinction prevents the previously
-                                 displayed message from showing when the Contact Us link is clicked.
+                            <!-- The asp-route-displayMessage attribute is added to pass displayMessage as a route
+                                parameter. This ensures that the route triggered by clicking the Contact Us link is
+                                different from the route triggered when the form submit button is pressed. This
+                                distinction prevents the previously displayed message from showing when the Contact Us
+                                link is clicked.
                             -->
                         </li>
                     </ul>
