@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LARemodeling")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0021a8bf4b94d035f40b69126f1920bd575bb973")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2188a8b5c1970d23542a7ae92d5c8500a61bbc94")]
 [assembly: System.Reflection.AssemblyProductAttribute("LARemodeling")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LARemodeling")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
