@@ -5,13 +5,8 @@ namespace LARemodeling;
 
 public class DapperWrapper : IDapperWrapper
 {
-    public int Execute(
-        IDbConnection? conn,
-        string? sql,
-        object? param = null,
-        IDbTransaction? transaction = null,
-        int? commandTimeout = null,
-        CommandType? commandType = null)
+    public int Execute(IDbConnection? conn, string? sql, object? param = null, IDbTransaction? transaction = null,
+        int? commandTimeout = null, CommandType? commandType = null)
     {
         ArgumentNullException.ThrowIfNull(conn);
 
@@ -20,13 +15,8 @@ public class DapperWrapper : IDapperWrapper
         return conn.Execute(sql, param, transaction, commandTimeout, commandType);
     }
 
-    public IEnumerable<T> Query<T>(
-        IDbConnection? conn,
-        string? sql,
-        object? param = null,
-        IDbTransaction? transaction = null,
-        bool buffered = true,
-        int? commandTimeout = null,
+    public IEnumerable<T> Query<T>(IDbConnection? conn, string? sql, object? param = null,
+        IDbTransaction? transaction = null, bool buffered = true, int? commandTimeout = null,
         CommandType? commandType = null)
     {
         ArgumentNullException.ThrowIfNull(conn);

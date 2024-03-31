@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LARemodeling", "LARemodeling\LARemodeling.csproj", "{1CA07DB8-7B0C-47E4-8A9E-CD994F6E7D37}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LARemodeling.Tests", "LARemodeling.Tests\LARemodeling.Tests.csproj", "{CCB92C6B-0C31-4BA7-BFFF-8E198FC52DF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1CA07DB8-7B0C-47E4-8A9E-CD994F6E7D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CA07DB8-7B0C-47E4-8A9E-CD994F6E7D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CA07DB8-7B0C-47E4-8A9E-CD994F6E7D37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCB92C6B-0C31-4BA7-BFFF-8E198FC52DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB92C6B-0C31-4BA7-BFFF-8E198FC52DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCB92C6B-0C31-4BA7-BFFF-8E198FC52DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCB92C6B-0C31-4BA7-BFFF-8E198FC52DF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

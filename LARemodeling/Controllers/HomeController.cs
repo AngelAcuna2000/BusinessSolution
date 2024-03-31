@@ -1,9 +1,8 @@
-﻿using LARemodeling;
-using LARemodeling.Models;
+﻿using LARemodeling.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace BusinessWebsite.Controllers;
+namespace LARemodeling.Controllers;
 
 public class HomeController(ILARemodelingRepo repo) : Controller
 {

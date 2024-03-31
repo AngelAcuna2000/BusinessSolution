@@ -1,23 +1,19 @@
-﻿using LARemodeling.Models;
-using System.Data;
+﻿using System.Data;
+using Dapper;
+using LARemodeling.Models;
 
 namespace LARemodeling;
 
-public class LARemodelingRepo(
-    IDapperWrapper dapperWrapper,
-    ILogger<LARemodelingRepo> logger,
-    IDbConnection conn) : ILARemodelingRepo
+public class LARemodelingRepo(IDbConnection conn, ILogger<LARemodelingRepo> logger) : ILARemodelingRepo
 {
-    private readonly IDapperWrapper _dapperWrapper = dapperWrapper;
-    private readonly ILogger<LARemodelingRepo> _logger = logger;
-    private readonly IDbConnection _conn = conn;
+    private readonly ILogger<LARemodelingRepo> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    private readonly IDbConnection _conn = conn ?? throw new ArgumentNullException(nameof(conn));
 
     public bool InsertInquiry(InquiryModel inquiry)
     {
         try
         {
-            _dapperWrapper.Execute(
-                _conn, "INSERT INTO inquiries (name, phone, email) VALUES (@Name, @Phone, @Email);", inquiry);
+            _conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@Name, @Phone, @Email);", inquiry);
 
             return true;
         }
@@ -33,7 +29,7 @@ public class LARemodelingRepo(
     {
         try
         {
-            return _dapperWrapper.Query<InquiryModel>(_conn, "SELECT * FROM inquiries;");
+            return _conn.Query<InquiryModel>("SELECT * FROM inquiries;");
         }
         catch (Exception ex)
         {
@@ -47,8 +43,7 @@ public class LARemodelingRepo(
     {
         try
         {
-            _dapperWrapper.Execute(
-                _conn, "DELETE FROM inquiries WHERE inquiry_id = @Inquiry_ID;", new { inquiry.Inquiry_ID });
+            _conn.Execute("DELETE FROM inquiries WHERE inquiry_id = @Inquiry_ID;", new { inquiry.Inquiry_ID });
 
             return true;
         }
