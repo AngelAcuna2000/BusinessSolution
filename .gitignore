@@ -1,7 +1,8 @@
 .vs/
-LARemodeling/appsettings.json
-LARemodeling/Properties/
-LARemodeling/bin/
-LARemodeling/obj/
-LARemodeling/LARemodeling.csproj.user
 /LARemodeling/appsettings.json
+/LARemodeling/Properties/
+/LARemodeling/bin/
+/LARemodeling/obj/
+/LARemodeling.csproj.user
+/LARemodeling.Tests/bin/
+/LARemodeling.Tests/obj/
