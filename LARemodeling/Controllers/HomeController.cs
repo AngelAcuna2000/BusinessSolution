@@ -1,4 +1,4 @@
-﻿using LARemodeling.Models;
+using LARemodeling.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -61,6 +61,6 @@ public class HomeController(ILARemodelingRepo repo) : Controller
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error() => 
+    public IActionResult Error() =>
         View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }
