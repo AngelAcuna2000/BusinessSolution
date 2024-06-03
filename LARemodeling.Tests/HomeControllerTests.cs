@@ -29,8 +29,6 @@ public class HomeControllerTests
         Assert.IsType<InquiryModel>(viewResult.Model);
     }
 
-    // Other test methods (FormSubmit, InquiryManager) remain unchanged
-
     [Fact]
     public void Portfolio_ReturnsView()
     {

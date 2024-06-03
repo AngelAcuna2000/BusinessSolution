@@ -19,8 +19,6 @@ builder.Services.AddScoped<IDbConnection>(provider =>
     return connection;
 });
 
-builder.Services.AddScoped<IDapperWrapper, DapperWrapper>();
-
 builder.Services.AddScoped<ILARemodelingRepo, LARemodelingRepo>();
 
 var app = builder.Build();
