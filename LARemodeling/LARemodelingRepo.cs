@@ -1,13 +1,13 @@
-﻿using System.Data;
-using Dapper;
+﻿using Dapper;
 using LARemodeling.Models;
+using MySql.Data.MySqlClient;
 
 namespace LARemodeling;
 
-public class LARemodelingRepo(IDbConnection conn, ILogger<LARemodelingRepo> logger) : ILARemodelingRepo
+public class LARemodelingRepo(MySqlConnection conn, ILogger<LARemodelingRepo> logger) : ILARemodelingRepo
 {
     private readonly ILogger<LARemodelingRepo> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-    private readonly IDbConnection _conn = conn ?? throw new ArgumentNullException(nameof(conn));
+    private readonly MySqlConnection _conn = conn ?? throw new ArgumentNullException(nameof(conn));
 
     public bool InsertInquiry(InquiryModel inquiry)
     {

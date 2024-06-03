@@ -1,6 +1,5 @@
 using LARemodeling;
 using MySql.Data.MySqlClient;
-using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,18 +7,14 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IDbConnection>(provider =>
+builder.Services.AddScoped<MySqlConnection>((s) =>
 {
-    var connectionString = builder.Configuration.GetConnectionString("client_inquiries");
-
-    var connection = new MySqlConnection(connectionString);
-
-    connection.Open();
-
-    return connection;
+    MySqlConnection conn = new(builder.Configuration.GetConnectionString("azure"));
+    conn.Open();
+    return conn;
 });
 
-builder.Services.AddScoped<ILARemodelingRepo, LARemodelingRepo>();
+builder.Services.AddTransient<ILARemodelingRepo, LARemodelingRepo>();
 
 var app = builder.Build();
 
