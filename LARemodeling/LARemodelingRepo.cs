@@ -13,7 +13,10 @@ public class LARemodelingRepo(MySqlConnection conn, ILogger<LARemodelingRepo> lo
     {
         try
         {
-            _conn.Execute("INSERT INTO inquiries (name, phone, email) VALUES (@Name, @Phone, @Email);", inquiry);
+            inquiry.Date = DateTime.Now;
+
+            _conn.Execute("INSERT INTO inquiries (name, phone, email, date) VALUES (@Name, @Phone, @Email, @Date);", 
+                inquiry);
 
             return true;
         }
