@@ -6,15 +6,13 @@ namespace LARemodeling;
 
 public class LARemodelingRepo(MySqlConnection conn, ILogger<LARemodelingRepo> logger) : ILARemodelingRepo
 {
-    private readonly ILogger<LARemodelingRepo> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     private readonly MySqlConnection _conn = conn ?? throw new ArgumentNullException(nameof(conn));
+    private readonly ILogger<LARemodelingRepo> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
     public bool InsertInquiry(InquiryModel inquiry)
     {
         try
         {
-            inquiry.Date = DateTime.Now;
-
             _conn.Execute("INSERT INTO inquiries (name, phone, email, date) VALUES (@Name, @Phone, @Email, @Date);", 
                 inquiry);
 
